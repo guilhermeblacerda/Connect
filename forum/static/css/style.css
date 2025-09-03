@@ -1,0 +1,168 @@
+body {
+    background-color: #EBE1C5;
+}
+
+    p {
+    color: #595643;
+}
+
+    input {
+        outline: none;
+
+        background-color: transparent;
+        border: none;
+
+        border-bottom: 1px solid #4e6b66;
+    }
+
+    #Sair {
+
+        position: absolute;
+
+        color: #595643;
+
+        right: 0;
+        
+        text-shadow: 5px -5px 10px rgba(0, 0, 0, 0.15);;
+    }
+
+    #login_title {
+        text-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+    }
+
+    #login_bar {
+        position: absolute;
+
+        top: 50%;
+    }
+
+    #register_bar {
+        position: absolute;
+
+        top: 70%;
+
+    }
+
+    .principal_title {
+
+        position: absolute;
+
+        left: 50%;
+        top: 100px;
+
+
+        transform: translate(-50%,-50%);
+
+        color: #4E6B66;
+    }
+
+    .principal_title h1{
+        font-size: 50px;
+
+        font-family: 'Poppins', sans-serif;
+
+        text-shadow: 0px -5px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .horizontal_list{
+
+        position:relative;
+        display: flex;
+
+        left: 100px;
+        padding: 0;
+        margin: 0;
+        gap: 10px;
+
+        width: 80%;
+
+        list-style: none;
+
+        font-family: 'Poppins', sans-serif;
+
+        text-shadow: -5px -5px 10px rgba(0, 0, 0, 0.2);
+
+
+    }
+
+    .bar {
+
+        position: fixed;
+        left: 50%;
+        bottom: -5%;
+        width: 50%;
+        height: 75px;
+        padding: 0;
+
+        background-color: #ed834e;
+
+        transform: translate(-50%,-50%);
+
+        border-radius: 15px;
+
+        box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.7);
+    }
+
+    .login_container {
+        display: flex;
+
+        position: fixed;
+
+        left: 50%;
+        bottom: 10%;
+        width: 50%;
+        height: 200px;
+        padding: 0;
+
+        transform: translate(-50%,-50%);
+
+        flex-direction: column;
+
+        font-family: 'Poppins', sans-serif; 
+    }
+
+
+    .register_container {
+        display: flex;
+
+        position: fixed;
+
+        left: 50%;
+        bottom: 10%;
+        width: 50%;
+        height: 150px;
+        padding: 0;
+
+        transform: translate(-50%,-50%);
+
+        flex-direction: column;
+
+        font-family: 'Poppins', sans-serif;
+        
+    }
+
+    .login_container input {
+        font-size: 17px;
+
+        margin-top: 10px;
+    }
+
+    .register_container input {
+        font-size: 17px;
+
+        margin-top: 10px;
+    }
+
+    .entry_button {
+        position: absolute;
+        left: 50%;
+        bottom: 15%;
+
+        height: 80px;
+        width: 100px;
+
+        transform: translate(-50%,-50%);
+
+        border-radius: 15px;
+
+    }
