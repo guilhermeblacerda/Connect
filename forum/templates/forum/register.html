@@ -10,29 +10,34 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Register</title>
 
 </head>
 <body>
 
-        <li class="horizontal_list">
-            <ul><a id = "register" href="{% url 'register' %}">Registre-se</a></ul>
-        </li>
+    <li class="horizontal_list">
+        <ul><a id = "register" href="{% url 'login' %}">Login</a></ul>
+    </li>
 
     <div class = "principal_title">
-        <h1>LOGIN</h1>
+        <h1 id = "login_title">REGISTRE-SE</h1>
     </div>
 
             
     <form method="POST">
         {% csrf_token %}
 
-        <div class="login" id="login_username">
+        <div class="login" id="register_username">
             <label for="Login">Digite um Login:</label>
             <input type="text" name="username" placeholder="Nome de usuario">
         </div>
 
-        <div class="login" id="login_password">
+        <div class="login" id="register_email">
+            <label for="Login">Digite um email:</label>
+            <input type="email" name="email" placeholder="email@gmail.com">
+        </div>
+
+        <div class="login" id="register_password">
             <label for="Senha">Digite uma Senha:</label>
             <input type="password" name="password" placeholder="Senha">
         </div>

@@ -1,10 +1,10 @@
-body {
-    background-color: #EBE1C5;
-}
+    body {
+        background-color: #EBE1C5;
+    }
 
-    p {
-    color: #595643;
-}
+        p {
+        color: #595643;
+    }
 
     input {
         outline: none;
@@ -16,19 +16,28 @@ body {
     }
 
     #Sair {
-
         position: absolute;
 
         color: #595643;
 
         right: 0;
         
-        text-shadow: 5px -5px 10px rgba(0, 0, 0, 0.15);;
+        text-shadow: 5px -5px 10px rgba(0, 0, 0, 0.15);
     }
 
-    #login_title {
-        text-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+    #register {
+        position: absolute;
+
+        right: -120px;
+        top: 30px;
+
+        color: #595643;
+
+        text-shadow: none;
+        text-decoration: none;
+
     }
+    
 
     #login_bar {
         position: absolute;
@@ -43,13 +52,45 @@ body {
 
     }
 
+    #login_password {
+        left: 50%;
+        bottom: 10px;
+    }
+
+    #login_username {
+
+        left: 50%;
+        bottom: 80px;
+        
+    }
+
+    #register_username {
+
+        left: 50%;
+        bottom: 170px;
+        
+    }
+
+    #register_email {
+
+        left: 50%;
+        bottom: 90px;
+
+    }
+
+    #register_password {
+
+        left: 50%;
+        bottom: 10px;
+
+    }
+
     .principal_title {
 
         position: absolute;
 
         left: 50%;
         top: 100px;
-
 
         transform: translate(-50%,-50%);
 
@@ -65,7 +106,6 @@ body {
     }
 
     .horizontal_list{
-
         position:relative;
         display: flex;
 
@@ -82,12 +122,11 @@ body {
 
         text-shadow: -5px -5px 10px rgba(0, 0, 0, 0.2);
 
-
     }
 
     .bar {
-
         position: fixed;
+
         left: 50%;
         bottom: -5%;
         width: 50%;
@@ -103,13 +142,11 @@ body {
         box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.7);
     }
 
-    .login_container {
+    .login {
         display: flex;
 
-        position: fixed;
+        position: absolute;
 
-        left: 50%;
-        bottom: 10%;
         width: 50%;
         height: 200px;
         padding: 0;
@@ -121,48 +158,31 @@ body {
         font-family: 'Poppins', sans-serif; 
     }
 
-
-    .register_container {
-        display: flex;
-
-        position: fixed;
-
-        left: 50%;
-        bottom: 10%;
-        width: 50%;
-        height: 150px;
-        padding: 0;
-
-        transform: translate(-50%,-50%);
-
-        flex-direction: column;
-
-        font-family: 'Poppins', sans-serif;
-        
-    }
-
-    .login_container input {
+    .login input {
         font-size: 17px;
 
         margin-top: 10px;
     }
 
-    .register_container input {
-        font-size: 17px;
-
-        margin-top: 10px;
-    }
-
-    .entry_button {
+    .entry_button{
         position: absolute;
         left: 50%;
         bottom: 15%;
 
         height: 80px;
-        width: 100px;
-
+        width: 200px;
         transform: translate(-50%,-50%);
 
+        background-color: #ed834e;
+        border: none;
         border-radius: 15px;
+        box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.7);
 
+        font-family: 'Poppins', sans-serif;
+        font-size: 20px;
+
+    }
+
+    .entry_button:active {
+        box-shadow: inset 0px 5px 10px rgba(0, 0, 0, 0.7);
     }

@@ -21,6 +21,7 @@ from forum import views
 
 urlpatterns = [
     path('', views.login_page, name="login"),
+    path("register",views.register_page,name="register"),
     path('home', views.home_page, name="home"),
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls, name="admin"),
 ]
