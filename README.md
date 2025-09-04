@@ -1,6 +1,6 @@
   _CONNECT_
   ------------
+  
+O connect consiste em uma pagina de web de gestão escolar.
 
-  *cade silk song?*
-
-4 de setembro amem amem
+O sistema é uma plataforma web completa desenvolvida para facilitar a gestão acadêmica de instituições de ensino.
