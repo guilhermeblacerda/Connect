@@ -85,6 +85,30 @@
 
     }
 
+    #login_error{
+
+        left: 50%;
+        bottom: 10px;
+
+        transform: translate(-50%,-50%);
+
+    }
+
+    #login_forget{
+
+        left: 70%;
+        bottom: 28%;
+
+        transform: translate(-50%,-50%);
+    }
+
+    #return{
+        left: -5%;
+        top: 20px;
+
+        transform: translate(-50%,-50%);
+    }
+
     .principal_title {
 
         position: absolute;
@@ -185,4 +209,23 @@
 
     .entry_button:active {
         box-shadow: inset 0px 5px 10px rgba(0, 0, 0, 0.7);
+    }
+
+    .text_error{
+        position: absolute;
+        
+        font-size: 20px;
+        font-family: 'Poppins',sans-serif;
+        color: #cc4b4b;
+    }
+
+    .links{
+        position: absolute;
+
+        color: #595643;
+
+        font-family: 'Poppins',sans-serif;
+
+        text-shadow: none;
+        text-decoration: none;
     }

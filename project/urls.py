@@ -15,13 +15,30 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.contrib.auth import views as auth_views
 from django.urls import path
 
 from forum import views
 
 urlpatterns = [
     path('', views.login_page, name="login"),
+
     path("register",views.register_page,name="register"),
+
     path('home', views.home_page, name="home"),
+
     path('admin/', admin.site.urls, name="admin"),
+
+    path('forgot_passwd',auth_views.PasswordResetView.as_view(
+        template_name = 'forum/forgot.html'), name='password_reset'),
+
+    path('forgot/passwd/<uidb64>/<token>/',auth_views.PasswordResetConfirmView.as_view(
+        template_name = 'forum/forgot_confirm.html'), name='password_reset_confirm'),
+
+    path('forgot_passwd/send/', auth_views.PasswordResetDoneView.as_view(
+        template_name = 'forum/forgot_reset.html'), name='password_reset_done'),
+
+    path('forgot_passwd/complete', auth_views.PasswordResetConfirmView.as_view(
+        template_name = 'forum/forgot_complete.html'), name= 'password_reset_complete'),
+
 ]

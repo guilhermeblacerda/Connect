@@ -10,42 +10,33 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Esqueci a senha</title>
 
 </head>
 <body>
 
         <li class="horizontal_list">
-            <ul><a id = "register" href="{% url 'register' %}">Registre-se</a></ul>
+            <ul><a class = "links" id="return" href="{% url 'login' %}">Voltar</a></ul>
         </li>
 
     <div class = "principal_title">
-        <h1>LOGIN</h1>
+        <h1>Recuperar senhar</h1>
     </div>
 
     <form method="POST">
         {% csrf_token %}
 
-        <div class="login" id="login_username">
-            <label for="Login">Digite um Login:</label>
-            <input type="text" name="username" placeholder="Nome de usuario">
-        </div>
-
         <div class="login" id="login_password">
-            <label for="Senha">Digite uma Senha:</label>
-            <input type="password" name="password" placeholder="Senha">
+            <label for="Senha">Digite um email:</label>
+            <input type="email" name="email" placeholder="exemplo@gmail.com">
         </div>
 
         <button type="submit" class="entry_button">enviar</button>
-    </form>    
-
-    <div>
-        <a class="links" id="login_forget" href="{% url 'password_reset' %}">Esqueci a senha</a>
-    </div>  
+    </form>
 
     {% if error %}
         <p class="text_error" id="login_error">{{error}}</p>
-    {% endif %}     
+    {% endif %}   
     
 </body>
 </html>
