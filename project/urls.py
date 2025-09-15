@@ -38,7 +38,7 @@ urlpatterns = [
     path('forgot_passwd/send/', auth_views.PasswordResetDoneView.as_view(
         template_name = 'forum/forgot_reset.html'), name='password_reset_done'),
 
-    path('forgot_passwd/complete', auth_views.PasswordResetConfirmView.as_view(
+    path('forgot_passwd/complete', auth_views.PasswordResetCompleteView.as_view(
         template_name = 'forum/forgot_complete.html'), name= 'password_reset_complete'),
 
 ]
