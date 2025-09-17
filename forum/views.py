@@ -44,4 +44,8 @@ def register_page(request):
 
     return render(request, 'forum/register.html')
 
+
+def absence_page(request):
+    return render(request, 'forum/absence.html')
+
 # Create your views here.

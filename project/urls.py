@@ -23,13 +23,15 @@ from forum import views
 urlpatterns = [
     path('', views.login_page, name="login"),
 
-    path("register",views.register_page,name="register"),
+    path('register/',views.register_page, name="register"),
 
-    path('home', views.home_page, name="home"),
+    path('home/', views.home_page, name="home"),
 
     path('admin/', admin.site.urls, name="admin"),
 
-    path('forgot_passwd',auth_views.PasswordResetView.as_view(
+    path('absence/', views.absence_page, name="absence"),
+
+    path('forgot_passwd/',auth_views.PasswordResetView.as_view(
         template_name = 'forum/forgot.html'), name='password_reset'),
 
     path('forgot/passwd/<uidb64>/<token>/',auth_views.PasswordResetConfirmView.as_view(

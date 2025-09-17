@@ -4,6 +4,8 @@
 
         p {
         color: #595643;
+
+        font-family: 'Poppins',sans-serif;
     }
 
     input {
@@ -97,14 +99,17 @@
     #login_forget{
 
         left: 70%;
-        bottom: 28%;
+        bottom: 26%;
 
         transform: translate(-50%,-50%);
     }
 
     #return{
-        left: -5%;
-        top: 20px;
+
+        position: absolute;
+
+        left: -50px;
+        top: 15px;
 
         transform: translate(-50%,-50%);
     }
@@ -228,4 +233,85 @@
 
         text-shadow: none;
         text-decoration: none;
+    }
+
+    .user_data{
+
+        position: relative;
+
+        right: -50%;
+        top: 140px;
+
+        width: 80%;           
+        height: 200px;
+
+        background-color: #fff;  
+        border: 1px solid #ccc; 
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
+        border-radius: 8px;
+
+        transform: translate(-50%,-50%);
+
+    }
+
+    .user_data img{
+
+        position: absolute;
+
+        left: 30px;
+        top: 25px;
+
+    }
+
+    .user_data h1{
+
+        position: absolute;
+
+        left: 175px;
+        top: 5px;
+
+        font-family: 'Poppins',sans-serif;
+
+        color: #4E6B66;
+
+    }
+
+        .user_data h2{
+
+        position: absolute;
+
+        right: 50px;
+        top: 5px;
+
+        font-family: 'Poppins',sans-serif;
+
+        color: #4E6B66;
+
+    }
+
+    .user_data p{
+        position: absolute;
+
+        left: 175px;
+        top: 60px
+
+    }
+
+    .user_absence{
+
+        position: relative;
+
+        right: -50%;
+        bottom: -200px;
+
+        width: 80%;           
+        height: auto;
+
+        background-color: #fff;  
+        border: 1px solid #ccc; 
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
+        border-radius: 8px;
+
+        transform: translate(-50%,-50%);
+
     }
