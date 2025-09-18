@@ -314,18 +314,19 @@
 
         position: relative;
 
-        right: -50%;
-        bottom: -200px;
+        right: -135px;
+        bottom: -80px;
 
         width: 80%;           
         height: auto;
 
+        min-height: 200px;
+        overflow-y: auto;
+
         background-color: #fff;  
         border: 1px solid #ccc; 
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
-        border-radius: 8px;
-
-        transform: translate(-50%,-50%);    
+        border-radius: 8px;  
 
     }
 
@@ -334,8 +335,6 @@
         padding: 10px;
 
         font-family: 'Poppins',sans-serif;
-
-        width: 100%;
 
         text-align: left;
 
