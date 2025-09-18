@@ -18,3 +18,6 @@ Link do figma: https://www.figma.com/design/LKl432PuzAcMlRcioxsRUU/Fds---grupo-2
 
 Link do screencast do figma : https://youtu.be/0vRORnZYjXQ
 
+Entrega 02 - 29/09:
+
+<img width="1530" height="548" alt="Captura de tela 2025-09-18 091608" src="https://github.com/user-attachments/assets/20a2e5e0-de67-4c7a-a37f-3b1cb31292aa" />
