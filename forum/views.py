@@ -56,4 +56,10 @@ def absence_page(request):
     total = faltas.count()
     return render(request, 'forum/absence.html',{'faltas': faltas, 'total': total})
 
+def score_page(request):
+    if not request.user.is_authenticated:
+        return redirect('login')
+    
+    return render(request, 'forum/score.html')
+
 # Create your views here.

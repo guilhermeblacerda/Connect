@@ -31,6 +31,8 @@ urlpatterns = [
 
     path('absence/', views.absence_page, name="absence"),
 
+    path('score/', views.score_page, name="score"),
+
     path('logout/', views.logout_page, name="logout"),
 
     path('forgot_passwd/',auth_views.PasswordResetView.as_view(
