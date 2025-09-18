@@ -114,6 +114,13 @@
         transform: translate(-50%,-50%);
     }
 
+    #link {
+        text-shadow: none;
+        text-decoration: none;
+
+        color: black;
+    }
+
     .principal_title {
 
         position: absolute;
@@ -313,5 +320,13 @@
         border-radius: 8px;
 
         transform: translate(-50%,-50%);
+
+    }
+
+    .user_absence th{
+
+        padding: 10px;
+
+        font-family: 'Poppins',sans-serif;
 
     }

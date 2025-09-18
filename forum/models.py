@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import User
+
 
 
 import datetime
@@ -32,6 +34,21 @@ class Resposta(models.Model):
     
     def foi_publicado_recentemente(self):
         return self.data_criacao >= timezone.now() - datetime.timedelta(days=1)
-        
+
+class Materia(models.Model):
+    nome = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.nome
+
+class Falta(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    materia = models.ForeignKey(Materia, on_delete=models.CASCADE)
+    data = models.DateField()
+    justificada = models.BooleanField(default=False)
+    comentario = models.TextField(blank=True)
+
+    def __str__(self):
+        return f"{self.materia.nome} - {self.data} - {str(self.user)}"
 
 # Create your models here.

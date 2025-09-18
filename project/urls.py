@@ -31,6 +31,8 @@ urlpatterns = [
 
     path('absence/', views.absence_page, name="absence"),
 
+    path('logout/', views.logout_page, name="logout"),
+
     path('forgot_passwd/',auth_views.PasswordResetView.as_view(
         template_name = 'forum/forgot.html'), name='password_reset'),
 

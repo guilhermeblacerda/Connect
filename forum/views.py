@@ -1,9 +1,8 @@
 from django.shortcuts import render,redirect
 
-from django.contrib.auth import login,authenticate
-from django.core.mail import send_mail
+from django.contrib.auth import login,authenticate,logout
 from django.contrib.auth.models import User
-from django.utils.crypto import get_random_string
+from .models import Falta
 
 def home_page(request):
     return render(request,"forum/home.html")
@@ -44,8 +43,17 @@ def register_page(request):
 
     return render(request, 'forum/register.html')
 
+def logout_page(request):
+    logout(request)
+    return(redirect('login'))
+
 
 def absence_page(request):
-    return render(request, 'forum/absence.html')
+    if not request.user.is_authenticated:
+        return redirect('login')
+    
+    faltas = Falta.objects.filter(user=request.user).order_by('-data')
+    total = faltas.count()
+    return render(request, 'forum/absence.html',{'faltas': faltas, 'total': total})
 
 # Create your views here.
