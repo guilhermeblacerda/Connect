@@ -2,7 +2,7 @@
         background-color: #EBE1C5;
     }
 
-        p {
+    p {
         color: #595643;
 
         font-family: 'Poppins',sans-serif;
@@ -15,6 +15,12 @@
         border: none;
 
         border-bottom: 1px solid #4e6b66;
+    }
+
+    table {
+        border-collapse: collapse;
+
+        margin-bottom: 10px;
     }
 
     #Sair {
@@ -319,7 +325,7 @@
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
         border-radius: 8px;
 
-        transform: translate(-50%,-50%);
+        transform: translate(-50%,-50%);    
 
     }
 
@@ -328,5 +334,19 @@
         padding: 10px;
 
         font-family: 'Poppins',sans-serif;
+
+        width: 100%;
+
+        text-align: left;
+
+        width: 250px;
+
+        white-space: nowrap;
+
+    }
+
+    .user_absence thead{
+
+        background-color: #ed834e;
 
     }
