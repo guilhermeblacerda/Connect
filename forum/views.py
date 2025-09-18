@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 
 from django.contrib.auth import login,authenticate,logout
 from django.contrib.auth.models import User
-from .models import Falta
+from .models import Falta,Nota
 
 def home_page(request):
     return render(request,"forum/home.html")
@@ -52,7 +52,7 @@ def absence_page(request):
     if not request.user.is_authenticated:
         return redirect('login')
     
-    faltas = Falta.objects.filter(user=request.user).order_by('-data')
+    faltas = Falta.objects.filter(aluno__user=request.user).order_by('-data')
     total = faltas.count()
     return render(request, 'forum/absence.html',{'faltas': faltas, 'total': total})
 
@@ -60,6 +60,7 @@ def score_page(request):
     if not request.user.is_authenticated:
         return redirect('login')
     
-    return render(request, 'forum/score.html')
+    notas = Nota.objects.filter(aluno__user=request.user).order_by('-data')
+    return render(request, 'forum/score.html',{'notas': notas})
 
 # Create your views here.

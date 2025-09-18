@@ -1,0 +1,92 @@
+[
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$DOnlpQAQyxKasGchnwSKnn$1QLBQB6ZXUhJXbmtdO0nKS8LkV0yWG5xaoG/JIko3/M=",
+    "last_login": "2025-09-18T20:30:41.668Z",
+    "is_superuser": true,
+    "username": "stackadmin",
+    "first_name": "",
+    "last_name": "",
+    "email": "a@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2025-09-03T12:41:03.309Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 6,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$JYDxfTKW8Vt9Cm5TQglcec$JjyTZPxjffoEtBexsbL54tOlHjmMp+0mJu7FE6JYSFI=",
+    "last_login": "2025-09-04T13:35:43.549Z",
+    "is_superuser": false,
+    "username": "henrique",
+    "first_name": "",
+    "last_name": "",
+    "email": "hwbg@cesar.school",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-09-04T13:35:29.720Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 7,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$hREH5bMcIy0hzGnbN6bl7O$CepqXgYIqH+nDNiKoigQVGuhhCAsqsF7KkRacLeQRys=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "otavio",
+    "first_name": "",
+    "last_name": "",
+    "email": "okm@cesar.school",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-09-10T12:45:09.960Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 8,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$EsAwfb4UJ1ANcAczltlQLN$7kSeBQyngs11hKEjPDHdH92YAQNAmkRgyZx1rQ/1kE0=",
+    "last_login": "2025-09-18T17:44:05.711Z",
+    "is_superuser": false,
+    "username": "vitor",
+    "first_name": "",
+    "last_name": "",
+    "email": "vcs7@cesar.school",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-09-10T14:24:50.098Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 9,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$cvbpIFgI8On7TJYaCkhtfR$BfVXKyrywXnUH5X2wsCDoXhV2AMMSHAnv958tBCGujc=",
+    "last_login": "2025-09-15T13:58:28.431Z",
+    "is_superuser": false,
+    "username": "pedroRMQ",
+    "first_name": "",
+    "last_name": "",
+    "email": "prm@cesar.school",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-09-15T13:58:12.404Z",
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]

@@ -18,9 +18,13 @@
     }
 
     table {
+
         border-collapse: collapse;
 
-        margin-bottom: 10px;
+        width: 100%;
+
+        text-align: left;
+
     }
 
     #Sair {
@@ -314,8 +318,8 @@
 
         position: relative;
 
-        right: -135px;
-        bottom: -80px;
+        right: -150px;
+        bottom: -75px;
 
         width: 80%;           
         height: auto;
@@ -336,16 +340,31 @@
 
         font-family: 'Poppins',sans-serif;
 
-        text-align: left;
+        white-space: nowrap;
 
         width: 250px;
-
-        white-space: nowrap;
 
     }
 
     .user_absence thead{
 
         background-color: #ed834e;
+
+    }
+
+    .close_content{
+
+        max-height: 0;
+        overflow: hidden;
+
+
+    }
+
+    .open_content{
+
+        max-height: 500px;
+        min-height: 25px;
+
+        transition: max-height 0.4s ease-in-out;
 
     }
