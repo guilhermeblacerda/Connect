@@ -24,11 +24,21 @@ class Nota(models.Model):
     aluno = models.ForeignKey(Aluno,on_delete=models.CASCADE)
     materia = models.ForeignKey(Materia,on_delete=models.CASCADE)
     serie = models.ForeignKey(Serie,on_delete=models.CASCADE)
-    valor = models.FloatField()
+    media = models.FloatField()
     data = models.DateField()
 
     def __str__(self):
         return f"{self.materia.nome} - {self.aluno} {self.serie} - {self.data}"
+    
+class Avaliacao(models.Model):
+    aluno = models.ForeignKey(Aluno,on_delete=models.CASCADE)
+    numero = models.IntegerField() 
+    materia = models.ForeignKey(Materia,on_delete=models.CASCADE)
+    nota = models.FloatField()
+    data = models.DateField()
+
+    def __str__(self):
+        return f"avaliação {self.numero} de {self.materia} - {self.aluno} - {self.data}"
     
 class Falta(models.Model):
     aluno = models.ForeignKey(Aluno, on_delete=models.CASCADE)

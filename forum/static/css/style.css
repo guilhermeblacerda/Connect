@@ -352,11 +352,20 @@
 
     }
 
+    .clickable_line {
+        transition: background-color 0.3s ease;
+    }
+
+    .clickable_line:hover {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+    }
+
     .close_content{
 
         max-height: 0;
         overflow: hidden;
-
+        display: none   ;
 
     }
 

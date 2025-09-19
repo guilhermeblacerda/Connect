@@ -38,7 +38,7 @@
             <thead>
                 <tr>
                     <th>Materia</th>
-                    <th>Nota</th>
+                    <th>Media</th>
                     <th>Serie</th>
                     <th>Data</th>
                 </tr>
@@ -47,21 +47,38 @@
             <tbody>
 
                 {% for nota in notas %}
-                <tr class="clickable_line">
-                    <th>{{ nota.materia }}</th>
-                    <th>{{ nota.valor }}</th>
-                    <th>{{ nota.serie }}</th>
-                    <th>{{ nota.data }}</th>
-                </tr>
+                    <tr class="clickable_line">
+                        <th>{{ nota.materia }}</th>
+                        <th>{{ nota.media }}</th>
+                        <th>{{ nota.serie }}</th>
+                        <th>{{ nota.data }}</th>
+                    </tr>
 
-                <tr>
-                    <td colspan="4">
-                        <div  class="close_content">
-                            <p>testaaaando</p>
-                        </div>
-                    </td>
-                </tr>
+                    
+                        <tr class="close_content">
+                            <td>
+                                <table>
+
+                                    <tbody>
+
+                                        {% for avaliacao in avaliacoes %}
+                                            {% if avaliacao.materia == nota.materia %}
+                                                <tr>
+                                                    <th>avaliação {{ avaliacao.numero }}</th>
+                                                    <th>{{ avaliacao.materia }}</th>
+                                                    <th>{{ avaliacao.nota }}</th>
+                                                    <th></th>
+                                                </tr>
+                                            {% endif %} 
+                                        {% endfor %}    
+                                        
+                                    </tbody>
+
+                                </table>
+                            </td>    
+                        </tr>
                 {% endfor %}
+
             </tbody>
 
         </table>        

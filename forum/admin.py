@@ -6,6 +6,7 @@ admin.site.register(Serie)
 admin.site.register(Materia)
 admin.site.register(Falta)
 admin.site.register(Nota)
+admin.site.register(Avaliacao)
 
 
 # Register your models here.

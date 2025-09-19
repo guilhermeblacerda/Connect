@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 
 from django.contrib.auth import login,authenticate,logout
 from django.contrib.auth.models import User
-from .models import Falta,Nota
+from .models import Falta,Nota,Avaliacao
 
 def home_page(request):
     return render(request,"forum/home.html")
@@ -61,6 +61,8 @@ def score_page(request):
         return redirect('login')
     
     notas = Nota.objects.filter(aluno__user=request.user).order_by('-data')
-    return render(request, 'forum/score.html',{'notas': notas})
+    avaliacoes = Avaliacao.objects.filter(aluno__user=request.user).order_by('-data')
+
+    return render(request, 'forum/score.html',{'notas': notas,'avaliacoes': avaliacoes})
 
 # Create your views here.
