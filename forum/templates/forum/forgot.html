@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+
+    {% load static %}
+
+<head>
+
+    <link rel="stylesheet" href='{% static "css/style.css" %}'>
+    <link rel = "stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esqueci a senha</title>
+
+</head>
+<body>
+
+        <li class="horizontal_list">
+            <ul><a class = "links" id="return" href="{% url 'login' %}">Voltar</a></ul>
+        </li>
+
+    <div class = "principal_title">
+        <h1>Recuperar senhar</h1>
+    </div>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <div class="login" id="login_password">
+            <label for="Senha">Digite um email:</label>
+            <input type="email" name="email" placeholder="exemplo@gmail.com">
+        </div>
+
+        <button type="submit" class="entry_button">enviar</button>
+    </form>
+
+    {% if error %}
+        <p class="text_error" id="login_error">{{error}}</p>
+    {% endif %}   
+    
+</body>
+</html>

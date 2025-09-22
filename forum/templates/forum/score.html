@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    {% load static %}
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notas</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel = "stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
+
+</head>
+
+<body>
+
+    <div class="top_bar">
+        <li class="horizontal_list">
+            <ul id="return"><a id = 'link' href="{% url 'home' %}">Voltar</a></ul>
+        </li>
+    </div>
+
+    <div class="user_data">
+        <img src="https://placehold.co/128x128" alt="Foto do usuario">
+
+        <h1>Notas</h1>
+
+        <h2>Status: Em andamento</h2>
+
+        <p>{{ request.user.username }}</p>        
+    </div>
+
+    <div class="user_absence">
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Materia</th>
+                    <th>Media</th>
+                    <th>Serie</th>
+                    <th>Data</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                {% for nota in notas %}
+                    <tr class="clickable_line">
+                        <th>{{ nota.materia }}</th>
+                        <th>{{ nota.media }}</th>
+                        <th>{{ nota.serie }}</th>
+                        <th>{{ nota.data }}</th>
+                    </tr>
+
+                    
+                        <tr class="close_content">
+                            <td>
+                                <table>
+
+                                    <tbody>
+
+                                        {% for avaliacao in avaliacoes %}
+                                            {% if avaliacao.materia == nota.materia %}
+                                                <tr>
+                                                    <th>avaliação {{ avaliacao.numero }}</th>
+                                                    <th>{{ avaliacao.materia }}</th>
+                                                    <th>{{ avaliacao.nota }}</th>
+                                                    <th></th>
+                                                </tr>
+                                            {% endif %} 
+                                        {% endfor %}    
+                                        
+                                    </tbody>
+
+                                </table>
+                            </td>    
+                        </tr>
+                {% endfor %}
+
+            </tbody>
+
+        </table>        
+    </div>
+
+    <script  src="{% static 'js/score.js' %}"></script>
+
+</body>
