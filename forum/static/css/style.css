@@ -1,379 +1,344 @@
-    body {
-        background-color: #EBE1C5;
-    }
+body {
+  background-color: #ebe1c5;
+}
 
-    p {
-        color: #595643;
+p {
+  color: #595643;
 
-        font-family: 'Poppins',sans-serif;
-    }
+  font-family: "Poppins", sans-serif;
+}
 
-    input {
-        outline: none;
+input {
+  outline: none;
 
-        background-color: transparent;
-        border: none;
+  background-color: transparent;
+  border: none;
 
-        border-bottom: 1px solid #4e6b66;
-    }
+  border-bottom: 1px solid #4e6b66;
+}
 
-    table {
+table {
+  border-collapse: collapse;
 
-        border-collapse: collapse;
+  width: 100%;
 
-        width: 100%;
+  text-align: left;
+}
 
-        text-align: left;
+#Sair {
+  position: absolute;
 
-    }
+  color: #595643;
 
-    #Sair {
-        position: absolute;
+  right: 0;
 
-        color: #595643;
+  text-shadow: 5px -5px 10px rgba(0, 0, 0, 0.15);
+}
 
-        right: 0;
-        
-        text-shadow: 5px -5px 10px rgba(0, 0, 0, 0.15);
-    }
+#register {
+  position: absolute;
 
-    #register {
-        position: absolute;
+  right: -120px;
+  top: 30px;
 
-        right: -120px;
-        top: 30px;
+  color: #595643;
 
-        color: #595643;
+  text-shadow: none;
+  text-decoration: none;
+}
 
-        text-shadow: none;
-        text-decoration: none;
+#login_bar {
+  position: absolute;
 
-    }
-    
+  top: 50%;
+}
 
-    #login_bar {
-        position: absolute;
+#register_bar {
+  position: absolute;
 
-        top: 50%;
-    }
+  top: 70%;
+}
 
-    #register_bar {
-        position: absolute;
+#login_password {
+  left: 50%;
+  bottom: 10px;
+}
 
-        top: 70%;
+#login_username {
+  left: 50%;
+  bottom: 80px;
+}
 
-    }
+#register_username {
+  left: 50%;
+  bottom: 170px;
+}
 
-    #login_password {
-        left: 50%;
-        bottom: 10px;
-    }
+#register_email {
+  left: 50%;
+  bottom: 90px;
+}
 
-    #login_username {
+#register_password {
+  left: 50%;
+  bottom: 10px;
+}
 
-        left: 50%;
-        bottom: 80px;
-        
-    }
+#login_error {
+  left: 50%;
+  bottom: 10px;
 
-    #register_username {
+  transform: translate(-50%, -50%);
+}
 
-        left: 50%;
-        bottom: 170px;
-        
-    }
+#login_forget {
+  left: 70%;
+  bottom: 26%;
 
-    #register_email {
+  transform: translate(-50%, -50%);
+}
 
-        left: 50%;
-        bottom: 90px;
+#return {
+  position: absolute;
 
-    }
+  left: -50px;
+  top: 15px;
 
-    #register_password {
+  transform: translate(-50%, -50%);
+}
 
-        left: 50%;
-        bottom: 10px;
+#link {
+  text-shadow: none;
+  text-decoration: none;
 
-    }
+  color: black;
+}
 
-    #login_error{
+.principal_title {
+  position: absolute;
 
-        left: 50%;
-        bottom: 10px;
+  left: 50%;
+  top: 100px;
 
-        transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
 
-    }
+  color: #4e6b66;
+}
 
-    #login_forget{
+.principal_title h1 {
+  font-size: 50px;
 
-        left: 70%;
-        bottom: 26%;
+  font-family: "Poppins", sans-serif;
 
-        transform: translate(-50%,-50%);
-    }
+  text-shadow: 0px -5px 10px rgba(0, 0, 0, 0.15);
+}
 
-    #return{
+.horizontal_list {
+  position: relative;
+  display: flex;
 
-        position: absolute;
+  left: 100px;
+  padding: 0;
+  margin: 0;
+  gap: 10px;
 
-        left: -50px;
-        top: 15px;
+  width: 80%;
 
-        transform: translate(-50%,-50%);
-    }
+  list-style: none;
 
-    #link {
-        text-shadow: none;
-        text-decoration: none;
+  font-family: "Poppins", sans-serif;
 
-        color: black;
-    }
+  text-shadow: -5px -5px 10px rgba(0, 0, 0, 0.2);
+}
 
-    .principal_title {
+.bar {
+  position: fixed;
 
-        position: absolute;
+  left: 50%;
+  bottom: -5%;
+  width: 50%;
+  height: 75px;
+  padding: 0;
 
-        left: 50%;
-        top: 100px;
+  background-color: #ed834e;
 
-        transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
 
-        color: #4E6B66;
-    }
+  border-radius: 15px;
 
-    .principal_title h1{
-        font-size: 50px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.7);
+}
 
-        font-family: 'Poppins', sans-serif;
+.login {
+  display: flex;
 
-        text-shadow: 0px -5px 10px rgba(0, 0, 0, 0.15);
-    }
+  position: absolute;
 
-    .horizontal_list{
-        position:relative;
-        display: flex;
+  width: 50%;
+  height: 200px;
+  padding: 0;
 
-        left: 100px;
-        padding: 0;
-        margin: 0;
-        gap: 10px;
+  transform: translate(-50%, -50%);
 
-        width: 80%;
+  flex-direction: column;
 
-        list-style: none;
+  font-family: "Poppins", sans-serif;
+}
 
-        font-family: 'Poppins', sans-serif;
+.login input {
+  font-size: 17px;
 
-        text-shadow: -5px -5px 10px rgba(0, 0, 0, 0.2);
+  margin-top: 10px;
+}
 
-    }
+.entry_button {
+  position: absolute;
+  left: 50%;
+  bottom: 15%;
 
-    .bar {
-        position: fixed;
+  height: 80px;
+  width: 200px;
+  transform: translate(-50%, -50%);
 
-        left: 50%;
-        bottom: -5%;
-        width: 50%;
-        height: 75px;
-        padding: 0;
+  background-color: #ed834e;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.7);
 
-        background-color: #ed834e;
+  font-family: "Poppins", sans-serif;
+  font-size: 20px;
+}
 
-        transform: translate(-50%,-50%);
+.entry_button:active {
+  box-shadow: inset 0px 5px 10px rgba(0, 0, 0, 0.7);
+}
 
-        border-radius: 15px;
+.text_error {
+  position: absolute;
 
-        box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.7);
-    }
+  font-size: 20px;
+  font-family: "Poppins", sans-serif;
+  color: #cc4b4b;
+}
 
-    .login {
-        display: flex;
+.links {
+  position: absolute;
 
-        position: absolute;
+  color: #595643;
 
-        width: 50%;
-        height: 200px;
-        padding: 0;
+  font-family: "Poppins", sans-serif;
 
-        transform: translate(-50%,-50%);
+  text-shadow: none;
+  text-decoration: none;
+}
 
-        flex-direction: column;
+.user_data {
+  position: relative;
 
-        font-family: 'Poppins', sans-serif; 
-    }
+  right: -50%;
+  top: 140px;
 
-    .login input {
-        font-size: 17px;
+  width: 80%;
+  height: 200px;
 
-        margin-top: 10px;
-    }
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
 
-    .entry_button{
-        position: absolute;
-        left: 50%;
-        bottom: 15%;
+  transform: translate(-50%, -50%);
+}
 
-        height: 80px;
-        width: 200px;
-        transform: translate(-50%,-50%);
+.user_data img {
+  position: absolute;
 
-        background-color: #ed834e;
-        border: none;
-        border-radius: 15px;
-        box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.7);
+  left: 30px;
+  top: 25px;
+}
 
-        font-family: 'Poppins', sans-serif;
-        font-size: 20px;
+.user_data h1 {
+  position: absolute;
 
-    }
+  left: 175px;
+  top: 5px;
 
-    .entry_button:active {
-        box-shadow: inset 0px 5px 10px rgba(0, 0, 0, 0.7);
-    }
+  font-family: "Poppins", sans-serif;
 
-    .text_error{
-        position: absolute;
-        
-        font-size: 20px;
-        font-family: 'Poppins',sans-serif;
-        color: #cc4b4b;
-    }
+  color: #4e6b66;
+}
 
-    .links{
-        position: absolute;
+.user_data h2 {
+  position: absolute;
 
-        color: #595643;
+  right: 50px;
+  top: 5px;
 
-        font-family: 'Poppins',sans-serif;
+  font-family: "Poppins", sans-serif;
 
-        text-shadow: none;
-        text-decoration: none;
-    }
+  color: #4e6b66;
+}
 
-    .user_data{
+.user_data p {
+  position: absolute;
 
-        position: relative;
+  left: 175px;
+  top: 60px;
+}
 
-        right: -50%;
-        top: 140px;
+.user_absence {
+  position: relative;
 
-        width: 80%;           
-        height: 200px;
+  right: -9.9%;
+  bottom: -75px;
 
-        background-color: #fff;  
-        border: 1px solid #ccc; 
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
-        border-radius: 8px;
+  width: 80%;
+  height: auto;
 
-        transform: translate(-50%,-50%);
+  min-height: 200px;
+  overflow-y: auto;
 
-    }
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
 
-    .user_data img{
+.user_absence th {
+  padding: 10px;
 
-        position: absolute;
+  font-family: "Poppins", sans-serif;
 
-        left: 30px;
-        top: 25px;
+  white-space: nowrap;
 
-    }
+  width: 250px;
+}
 
-    .user_data h1{
+.user_absence thead {
+  background-color: #ed834e;
+}
 
-        position: absolute;
+.clickable_line {
+  transition: background-color 0.3s ease;
+}
 
-        left: 175px;
-        top: 5px;
+.clickable_line:hover {
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+}
 
-        font-family: 'Poppins',sans-serif;
+.close_content {
+  max-height: 0;
+  overflow: hidden;
 
-        color: #4E6B66;
+  width: 100%;
 
-    }
+  transition: max-height 0.4s ease-in-out;
+}
 
-        .user_data h2{
+.open_content {
+  max-height: 500px;
 
-        position: absolute;
+  width: 100%;
 
-        right: 50px;
-        top: 5px;
-
-        font-family: 'Poppins',sans-serif;
-
-        color: #4E6B66;
-
-    }
-
-    .user_data p{
-        position: absolute;
-
-        left: 175px;
-        top: 60px
-
-    }
-
-    .user_absence{
-
-        position: relative;
-
-        right: -150px;
-        bottom: -75px;
-
-        width: 80%;           
-        height: auto;
-
-        min-height: 200px;
-        overflow-y: auto;
-
-        background-color: #fff;  
-        border: 1px solid #ccc; 
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
-        border-radius: 8px;  
-
-    }
-
-    .user_absence th{
-
-        padding: 10px;
-
-        font-family: 'Poppins',sans-serif;
-
-        white-space: nowrap;
-
-        width: 250px;
-
-    }
-
-    .user_absence thead{
-
-        background-color: #ed834e;
-
-    }
-
-    .clickable_line {
-        transition: background-color 0.3s ease;
-    }
-
-    .clickable_line:hover {
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-        border-radius: 10px;
-    }
-
-    .close_content{
-
-        max-height: 0;
-        overflow: hidden;
-        display: none   ;
-
-    }
-
-    .open_content{
-
-        max-height: 500px;
-        min-height: 25px;
-
-        transition: max-height 0.4s ease-in-out;
-
-    }
+  transition: max-height 0.4s ease-in-out;
+}
