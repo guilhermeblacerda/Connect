@@ -114,6 +114,20 @@ table {
   color: black;
 }
 
+#calendar {
+
+  position: absolute;
+
+  background-color: #fff;
+
+  top: 0px;
+  left: 5px;
+
+  width: 50%;
+
+  border-radius: 5px;
+}
+
 .principal_title {
   position: absolute;
 

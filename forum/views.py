@@ -65,4 +65,7 @@ def score_page(request):
 
     return render(request, 'forum/score.html',{'notas': notas,'avaliacoes': avaliacoes})
 
+def calendar_page(request):
+    return render(request,'forum/calendar.html')
+
 # Create your views here.
