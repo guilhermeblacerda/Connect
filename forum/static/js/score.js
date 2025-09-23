@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () =>{
 
     lines.forEach(line => {
         line.addEventListener('click', () => {
-            const detail = line.nextElementSibling.querySelector('div');
+            const detail = line.querySelector('div');
 
             console.log('mfdoom');
 

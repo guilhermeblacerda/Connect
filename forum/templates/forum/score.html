@@ -44,10 +44,10 @@
                 </tr>
             </thead>
 
-            <tbody>
+            {% for nota in notas %}
+            <tbody class="clickable_line">
 
-                {% for nota in notas %}
-                <tr class="clickable_line">
+                <tr>
                     <th>{{ nota.materia }}</th>
                     <th>{{ nota.media }}</th>
                     <th>{{ nota.serie }}</th>
@@ -79,9 +79,9 @@
 
                     </td>
                 </tr>
-                {% endfor %}
 
             </tbody>
+            {% endfor %}
 
         </table>
     </div>
