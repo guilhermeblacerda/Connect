@@ -116,16 +116,17 @@ table {
 
 #calendar {
 
-  position: absolute;
+  position: relative;
 
   background-color: #fff;
 
-  top: 0px;
-  left: 5px;
+  bottom: -75px;
+  right: -9.9%;
 
-  width: 50%;
+  width: 80%;
 
-  border-radius: 5px;
+  border-radius: 8px;
+  
 }
 
 .principal_title {

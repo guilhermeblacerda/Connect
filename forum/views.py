@@ -66,6 +66,9 @@ def score_page(request):
     return render(request, 'forum/score.html',{'notas': notas,'avaliacoes': avaliacoes})
 
 def calendar_page(request):
+    if not request.user.is_authenticated:
+        return redirect('login')
+
     return render(request,'forum/calendar.html')
 
 # Create your views here.
