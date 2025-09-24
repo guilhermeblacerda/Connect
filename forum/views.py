@@ -3,6 +3,7 @@ from django.shortcuts import render,redirect
 from django.contrib.auth import login,authenticate,logout
 from django.contrib.auth.models import User
 from .models import Falta,Nota,Avaliacao,Aluno,Materia
+import json
 
 def home_page(request):
     return render(request,"forum/home.html")
@@ -32,7 +33,7 @@ def register_page(request):
         email = request.POST.get('email')
         passw = request.POST.get('password')
 
-        if not name:
+        if not name or not email or not passw:
             return redirect('register')
         
         if User.objects.filter(username=name).exists():
@@ -74,6 +75,18 @@ def calendar_page(request):
     if not request.user.is_authenticated:
         return redirect('login')
 
-    return render(request,'forum/calendar.html')
+    aluno = Aluno.objects.filter(user=request.user).first()
+    materias = Materia.objects.filter(serie=aluno.serie)
+
+    eventos = []    
+
+    for materia in materias:
+        eventos.append({
+            "title":materia.nome,
+            "daysOfWeek": materia.get_dias(),
+        })
+
+
+    return render(request,'forum/calendar.html',{'materias': materias,'eventos': json.dumps(eventos)})
 
 # Create your views here.

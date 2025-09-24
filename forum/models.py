@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from multiselectfield import MultiSelectField
 
 class Serie(models.Model):
     nome = models.CharField(max_length=50)
@@ -8,8 +9,27 @@ class Serie(models.Model):
         return self.nome
 
 class Materia(models.Model):
+    Dias_semana = (
+        ('0','Domingo'),
+        ('1','Segunda_feira'),
+        ('2','Terça_feira'),
+        ('3','Quarta_feira'),
+        ('4','Quinta_feira'),
+        ('5','Sexta_feira'),
+        ('6','Sabado'),
+    )
+
     nome = models.CharField(max_length=50)
     serie = models.ForeignKey(Serie, on_delete=models.CASCADE)
+    dias = MultiSelectField(choices=Dias_semana,blank=True, default=list)
+
+    def get_dias(self):
+        lista = []
+
+        for n in self.dias:
+            lista.append(int(n))
+
+        return lista
 
     def __str__(self):
         return f"{self.nome} - {self.serie.nome}"

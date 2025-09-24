@@ -25,6 +25,14 @@ table {
   text-align: left;
 }
 
+#teste{
+  position: relative;
+
+  top: 100%;
+
+  height: 200px;
+}
+
 #Sair {
   position: absolute;
 
@@ -126,6 +134,8 @@ table {
   width: 80%;
 
   border-radius: 8px;
+
+  font-family: 'Poppins',sans-serif;
   
 }
 

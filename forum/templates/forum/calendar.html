@@ -11,23 +11,22 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.19/index.global.min.js'></script>
+    <script src='fullcalendar/core/locales/pt-br.global.js'></script>
+    <script id ='events_data' type="application/json">
+      {{ eventos|safe }}
+    </script>
+
     <script>
 
       document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
+        var eventos = JSON.parse(document.getElementById('events_data').textContent);
         var calendar = new FullCalendar.Calendar(calendarEl, {
-
-          events: [
-            {
-              title: 'The title',
-              start: '2025-10-01'
-
-            }
-          ],
-
-          aspectRatio: 2.5,
-
+          locale: 'pt-br',
           initialView: 'dayGridMonth',
+          aspectRatio: 2.5,
+          events: eventos,
+
         });
         calendar.render();
       });
@@ -36,21 +35,30 @@
   </head>
   <body>
 
-  <div class="top_bar">
-    <li class="horizontal_list">
-        <ul id="return"><a id = 'link' href="{% url 'home' %}">Voltar</a></ul>
-    </li>
-  </div>
+    <div class="top_bar">
+      <li class="horizontal_list">
+          <ul id="return"><a id = 'link' href="{% url 'home' %}">Voltar</a></ul>
+      </li>
+    </div>
 
-  <div class="user_data">
-    <img src="https://placehold.co/128x128" alt="Foto do usuario">
+    <div class="user_data">
+      <img src="https://placehold.co/128x128" alt="Foto do usuario">
 
-    <h1>Agenda</h1>
+      <h1>Agenda</h1>
 
-    <p>{{ request.user.username }}</p>
-  </div>
+      <p>{{ request.user.username }}</p>
+    </div>
 
-    <div id='calendar'></div>
+      <div id='calendar'></div>
 
   </body>
+
+  <footer>
+
+    <div id="teste">
+
+    </div>
+
+
+  </footer>
 </html>
