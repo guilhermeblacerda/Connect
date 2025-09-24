@@ -102,10 +102,10 @@ table {
 }
 
 #login_forget {
-  left: 70%;
-  bottom: 26%;
 
-  transform: translate(-50%, -50%);
+  left: 66%;
+  top: 520px;
+
 }
 
 #return {
