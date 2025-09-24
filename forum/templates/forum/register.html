@@ -15,9 +15,9 @@
 </head>
 <body>
 
-    <li class="horizontal_list">
-        <ul><a id = "register" href="{% url 'login' %}">Login</a></ul>
-    </li>
+    <ul class="horizontal_list">
+        <li><a id = "register" href="{% url 'login' %}">Login</a></li>
+    </ul>
 
     <div class = "principal_title">
         <h1 id = "login_title">REGISTRE-SE</h1>
@@ -44,6 +44,10 @@
 
         <button type="submit" class="entry_button">enviar</button>
     </form>    
+
+    {% if error %}
+        <p class="text_error" id="login_error">{{error}}</p>
+    {% endif %}    
     
 </body>
 </html>

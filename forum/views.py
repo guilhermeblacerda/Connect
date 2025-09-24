@@ -9,7 +9,6 @@ def home_page(request):
     return render(request,"forum/home.html")
 
 def login_page(request):
-
     context = {}
 
     if request.method == 'POST':
@@ -28,21 +27,27 @@ def login_page(request):
     return render(request, "forum/login.html", context)
 
 def register_page(request):
+    context = {}
+
     if request.method == "POST":
         name = request.POST.get('username')
         email = request.POST.get('email')
         passw = request.POST.get('password')
 
         if not name or not email or not passw:
-            return redirect('register')
+            context['error'] = 'Preencha todos os campos'
+            
+            return render(request, 'forum/register.html',context)
         
         if User.objects.filter(username=name).exists():
-            return redirect('register')
+            context['error'] = 'Usuario ja existe'
+
+            return render(request, 'forum/register.html',context)
         
         user = User.objects.create_user(username=name,email=email,password=passw)
         return redirect('login')
 
-    return render(request, 'forum/register.html')
+    return render(request, 'forum/register.html',context)
 
 def logout_page(request):
     logout(request)
