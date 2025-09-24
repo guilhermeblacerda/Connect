@@ -1,24 +1,26 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-class Materia(models.Model):
+class Serie(models.Model):
     nome = models.CharField(max_length=50)
 
     def __str__(self):
         return self.nome
 
-class Serie(models.Model):
+class Materia(models.Model):
     nome = models.CharField(max_length=50)
+    serie = models.ForeignKey(Serie, on_delete=models.CASCADE)
 
     def __str__(self):
-        return str(self.nome)
+        return f"{self.nome} - {self.serie.nome}"
     
 class Aluno(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    serie = models.ForeignKey(Serie,on_delete=models.CASCADE)
     materias = models.ManyToManyField(Materia,related_name='alunos')
 
     def __str__(self):
-        return str(self.user)
+        return f"{self.user} - {self.serie.nome}"
     
 class Nota(models.Model):
     aluno = models.ForeignKey(Aluno,on_delete=models.CASCADE)
@@ -31,14 +33,14 @@ class Nota(models.Model):
         return f"{self.materia.nome} - {self.aluno} {self.serie} - {self.data}"
     
 class Avaliacao(models.Model):
-    aluno = models.ForeignKey(Aluno,on_delete=models.CASCADE)
-    numero = models.IntegerField() 
+    aluno = models.ForeignKey(Aluno,on_delete=models.CASCADE,related_name='aluno')
     materia = models.ForeignKey(Materia,on_delete=models.CASCADE)
+    numero = models.IntegerField() 
     nota = models.FloatField()
     data = models.DateField()
 
     def __str__(self):
-        return f"avaliação {self.numero} de {self.materia} - {self.aluno} - {self.data}"
+        return f"avaliação {self.numero} de {self.materia} - {self.aluno.user} - {self.data}"
     
 class Falta(models.Model):
     aluno = models.ForeignKey(Aluno, on_delete=models.CASCADE)

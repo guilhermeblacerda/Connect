@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 
 from django.contrib.auth import login,authenticate,logout
 from django.contrib.auth.models import User
-from .models import Falta,Nota,Avaliacao
+from .models import Falta,Nota,Avaliacao,Aluno,Materia
 
 def home_page(request):
     return render(request,"forum/home.html")
@@ -60,10 +60,15 @@ def score_page(request):
     if not request.user.is_authenticated:
         return redirect('login')
     
-    notas = Nota.objects.filter(aluno__user=request.user).order_by('-data')
-    avaliacoes = Avaliacao.objects.filter(aluno__user=request.user).order_by('-data')
+    aluno = Aluno.objects.filter(user=request.user).first()
 
-    return render(request, 'forum/score.html',{'notas': notas,'avaliacoes': avaliacoes})
+    if aluno:
+        materias = Materia.objects.filter(serie=aluno.serie)
+        avaliacoes = Avaliacao.objects.filter(aluno__user=request.user).order_by('-data')
+
+        return render(request, 'forum/score.html',{'materias': materias,'avaliacoes': avaliacoes})
+
+    return render(request, 'forum/score.html')
 
 def calendar_page(request):
     if not request.user.is_authenticated:

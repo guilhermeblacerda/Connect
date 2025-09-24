@@ -44,13 +44,13 @@
                 </tr>
             </thead>
 
-            {% for nota in notas %}
+            {% for materia in materias %}
             <tbody class="clickable_line">
 
                 <tr>
-                    <th>{{ nota.materia }}</th>
+                    <th>{{ materia.nome }}</th>
                     <th>{{ nota.media }}</th>
-                    <th>{{ nota.serie }}</th>
+                    <th>{{ materia.serie }}</th>
                     <th>{{ nota.data }}</th>
                 </tr>
 
@@ -63,7 +63,7 @@
                                 <tbody>
 
                                     {% for avaliacao in avaliacoes %}
-                                    {% if avaliacao.materia == nota.materia %}
+                                    {% if avaliacao.materia.nome == materia.nome %}
                                     <tr>
                                         <th>avaliação {{ avaliacao.numero }}</th>
                                         <th>{{ avaliacao.nota }}</th>
