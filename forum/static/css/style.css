@@ -41,6 +41,8 @@ table {
   right: 0;
 
   text-shadow: 5px -5px 10px rgba(0, 0, 0, 0.15);
+
+  user-select: none;
 }
 
 #register {
@@ -115,15 +117,7 @@ table {
   transform: translate(-50%, -50%);
 }
 
-#link {
-  text-shadow: none;
-  text-decoration: none;
-
-  color: black;
-}
-
 #calendar {
-
   position: relative;
 
   background-color: #fff;
@@ -135,8 +129,10 @@ table {
 
   border-radius: 8px;
 
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.7);
+
   font-family: 'Poppins',sans-serif;
-  
+
 }
 
 .principal_title {
@@ -148,6 +144,8 @@ table {
   transform: translate(-50%, -50%);
 
   color: #4e6b66;
+
+  user-select: none;
 }
 
 .principal_title h1 {
@@ -163,9 +161,9 @@ table {
   display: flex;
 
   left: 100px;
-  padding: 0;
-  margin: 0;
-  gap: 10px;
+  gap: 50px;
+
+  top: 32%;
 
   width: 80%;
 
@@ -247,7 +245,7 @@ table {
 }
 
 .links {
-  position: absolute;
+  position: relative;
 
   color: #595643;
 
@@ -255,6 +253,8 @@ table {
 
   text-shadow: none;
   text-decoration: none;
+
+  user-select: none;
 }
 
 .user_data {
@@ -310,7 +310,7 @@ table {
   top: 60px;
 }
 
-.user_absence {
+.user_info {
   position: relative;
 
   right: -9.9%;
@@ -326,9 +326,11 @@ table {
   border: 1px solid #ccc;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
+
+  user-select: none;
 }
 
-.user_absence th {
+.user_info th {
   padding: 10px;
 
   font-family: "Poppins", sans-serif;
@@ -338,7 +340,7 @@ table {
   width: 250px;
 }
 
-.user_absence thead {
+.user_info thead {
   background-color: #ed834e;
 }
 
@@ -366,4 +368,10 @@ table {
   width: 100%;
 
   transition: max-height 0.4s ease-in-out;
+}
+
+.fc .fc-toolbar.fc-header-toolbar {
+  background-color: #ed834e;
+  border-radius: 8px;
+  height: 54px;
 }

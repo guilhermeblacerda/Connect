@@ -69,7 +69,7 @@ def score_page(request):
     aluno = Aluno.objects.filter(user=request.user).first()
 
     if aluno:
-        materias = Materia.objects.filter(serie=aluno.serie)
+        materias = aluno.materias.all()
         avaliacoes = Avaliacao.objects.filter(aluno__user=request.user).order_by('-data')
 
         return render(request, 'forum/score.html',{'materias': materias,'avaliacoes': avaliacoes})
@@ -81,17 +81,20 @@ def calendar_page(request):
         return redirect('login')
 
     aluno = Aluno.objects.filter(user=request.user).first()
-    materias = Materia.objects.filter(serie=aluno.serie)
 
-    eventos = []    
+    if aluno:
+        materias = aluno.materias.all()
 
-    for materia in materias:
-        eventos.append({
-            "title":materia.nome,
-            "daysOfWeek": materia.get_dias(),
-        })
+        eventos = []    
 
+        for materia in materias:
+            eventos.append({
+                "title":materia.nome,
+                "daysOfWeek": materia.get_dias(),
+            })
 
-    return render(request,'forum/calendar.html',{'materias': materias,'eventos': json.dumps(eventos)})
+        return render(request,'forum/calendar.html',{'materias': materias,'eventos': json.dumps(eventos)})
+
+    return render(request,'forum/calendar.html')
 
 # Create your views here.

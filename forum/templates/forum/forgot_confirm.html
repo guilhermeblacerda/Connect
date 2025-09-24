@@ -36,7 +36,7 @@
     </form>   
 
     {% if form.errors %}
-        <ul class="text_error">
+        <ul class="text_error" id="login_error">
             {% for field in form %}
                 {% for error in field.errors %}
                     <li>{{ error }}</li>
