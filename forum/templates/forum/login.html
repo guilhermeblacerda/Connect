@@ -39,8 +39,8 @@
         <button type="submit" class="entry_button">enviar</button>
     </form>    
 
-    <div>
-        <a class="links" id="login_forget" href="{% url 'password_reset' %}">Esqueci a senha</a>
+    <div id="login_forget">
+        <a class="links" href="{% url 'password_reset' %}">Esqueci a senha</a>
     </div>  
 
     {% if error %}
