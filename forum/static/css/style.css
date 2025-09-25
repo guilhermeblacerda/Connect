@@ -102,10 +102,12 @@ table {
 }
 
 #login_forget {
+  position: absolute;
 
-  left: 66%;
-  top: 520px;
+  left: 65%;
+  top: 62%;
 
+  width: 200px;
 }
 
 #return {
