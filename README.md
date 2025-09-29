@@ -20,4 +20,12 @@ Link do screencast do figma : https://youtu.be/0vRORnZYjXQ
 
 Entrega 02 - 29/09:
 
-<img width="1530" height="548" alt="Captura de tela 2025-09-18 091608" src="https://github.com/user-attachments/assets/20a2e5e0-de67-4c7a-a37f-3b1cb31292aa" />
+Print do Jira : <img width="1515" height="598" alt="Captura de tela 2025-09-29 085750" src="https://github.com/user-attachments/assets/79d18372-1d0c-4444-86bd-d9ac58af3d64" />
+
+Print do Bug Tracker : <img width="1531" height="543" alt="Captura de tela 2025-09-29 085911" src="https://github.com/user-attachments/assets/84888347-d932-4d41-97be-f0c90e211cbc" />
+
+Link do screencast do deployment : https://youtu.be/NUaPRvM9bE0
+
+Link do arquivo com o relatório da programação em par : https://docs.google.com/document/d/1IShEEUbqWfifDA5PFipxCwP6wHIWXmyDP816K3ICCTc/edit?usp=sharing
+
+
