@@ -27,6 +27,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'connect-e4d5eqazh2bdhafq.brazilsouth-01.azurewebsites.net',
     'connect-ctf8.onrender.com',
+    '127.0.0.1',
     ]
 
 CSRF_TRUSTED_ORIGINS = [

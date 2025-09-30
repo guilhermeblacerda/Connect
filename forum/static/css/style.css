@@ -36,25 +36,23 @@ table {
 #Sair {
   position: absolute;
 
-  color: #595643;
-
   right: 0;
-
-  text-shadow: 5px -5px 10px rgba(0, 0, 0, 0.15);
 
   user-select: none;
 }
 
 #register {
-  position: absolute;
-
-  right: -120px;
-  top: 30px;
-
   color: #595643;
+
+  position: fixed;
+
+  left: 90%;
+  top: 10%;
 
   text-shadow: none;
   text-decoration: none;
+  text-align: right;
+
 }
 
 #login_bar {
@@ -76,12 +74,12 @@ table {
 
 #login_username {
   left: 50%;
-  bottom: 80px;
+  bottom: 12%;
 }
 
 #register_username {
   left: 50%;
-  bottom: 170px;
+  bottom: 10px;
 }
 
 #register_email {
@@ -111,9 +109,9 @@ table {
 }
 
 #return {
-  position: absolute;
+  position: fixed;
 
-  left: -50px;
+  left: 5%;
   top: 15px;
 
   transform: translate(-50%, -50%);
@@ -138,16 +136,17 @@ table {
 }
 
 .principal_title {
-  position: absolute;
+  color: #4e6b66;
+
+  position: fixed;
 
   left: 50%;
   top: 100px;
 
   transform: translate(-50%, -50%);
 
-  color: #4e6b66;
-
   user-select: none;
+
 }
 
 .principal_title h1 {
@@ -159,13 +158,14 @@ table {
 }
 
 .horizontal_list {
-  position: relative;
+
+  position: fixed;
   display: flex;
 
-  left: 100px;
-  gap: 50px;
+  left: 4%;
+  top: 2%;
 
-  top: 32%;
+  gap: 14%;
 
   width: 80%;
 
@@ -180,10 +180,10 @@ table {
   position: fixed;
 
   left: 50%;
-  bottom: -5%;
+  bottom: 0;
+  
   width: 50%;
   height: 75px;
-  padding: 0;
 
   background-color: #ed834e;
 
@@ -195,16 +195,16 @@ table {
 }
 
 .login {
-  display: flex;
+  position: fixed;
 
-  position: absolute;
+  display: flex;
 
   width: 50%;
   height: 200px;
+
   padding: 0;
 
   transform: translate(-50%, -50%);
-
   flex-direction: column;
 
   font-family: "Poppins", sans-serif;
@@ -247,7 +247,7 @@ table {
 }
 
 .links {
-  position: relative;
+  position: fixed;
 
   color: #595643;
 
@@ -297,8 +297,8 @@ table {
 .user_data h2 {
   position: absolute;
 
-  right: 50px;
-  top: 5px;
+  right: 40px;
+  top: 15px;
 
   font-family: "Poppins", sans-serif;
 
