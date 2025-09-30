@@ -36,9 +36,9 @@ table {
 #Sair {
   position: absolute;
 
-  right: 0;
-
   user-select: none;
+
+  transform: translate(800px,0px);
 }
 
 #register {
@@ -109,10 +109,10 @@ table {
 }
 
 #return {
-  position: fixed;
+  position: absolute;
 
   left: 5%;
-  top: 15px;
+  top: -10px;
 
   transform: translate(-50%, -50%);
 }
@@ -165,15 +165,17 @@ table {
   left: 4%;
   top: 2%;
 
-  gap: 14%;
+  gap: 10%;
 
-  width: 80%;
+  width: 25%;
 
   list-style: none;
 
   font-family: "Poppins", sans-serif;
 
   text-shadow: -5px -5px 10px rgba(0, 0, 0, 0.2);
+
+  justify-content: space-between;
 }
 
 .bar {
@@ -247,7 +249,7 @@ table {
 }
 
 .links {
-  position: fixed;
+  position: absolute;
 
   color: #595643;
 
@@ -257,6 +259,8 @@ table {
   text-decoration: none;
 
   user-select: none;
+
+  width: 111px;
 }
 
 .user_data {
