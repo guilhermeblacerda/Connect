@@ -26,6 +26,8 @@ Print do Jira : <img width="1515" height="598" alt="Captura de tela 2025-09-29 0
 
 Print do Bug Tracker : <img width="1531" height="543" alt="Captura de tela 2025-09-29 085911" src="https://github.com/user-attachments/assets/84888347-d932-4d41-97be-f0c90e211cbc" />
 
+Deployment : https://connect-ctf8.onrender.com/
+
 Link do screencast do deployment : https://youtu.be/NUaPRvM9bE0
 
 Link do arquivo com o relatório da programação em par : https://docs.google.com/document/d/1IShEEUbqWfifDA5PFipxCwP6wHIWXmyDP816K3ICCTc/edit?usp=sharing
