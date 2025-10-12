@@ -18,24 +18,29 @@ from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.urls import path
 
-from student import views
+from student import views as studentViews
+from teacher import views as teacherViews
 
 urlpatterns = [
-    path('', views.login_page, name="login"),
+    path('', studentViews.login_page, name="login"),
 
-    path('register/',views.register_page, name="register"),
+    path('register/',studentViews.register_page, name="register"),
 
-    path('home/', views.home_page, name="home"),
+    path('home/', studentViews.home_page, name="home"),
 
     path('admin/', admin.site.urls, name="admin"),
 
-    path('absence/', views.absence_page, name="absence"),
+    path('absence/', studentViews.absence_page, name="absence"),
 
-    path('score/', views.score_page, name="score"),
+    path('score/', studentViews.score_page, name="score"),
 
-    path('calendar/', views.calendar_page, name="calendar"),
+    path('calendar/', studentViews.calendar_page, name="calendar"),
 
-    path('logout/', views.logout_page, name="logout"),
+    path('logout/', studentViews.logout_page, name="logout"),
+
+    path('teacherlogin', teacherViews.GoToLogin, name ="teacherLogin"),
+
+    path('teacherHome', teacherViews.GoToHome, name = "teacherHome"),
 
     path('forgot_passwd/',auth_views.PasswordResetView.as_view(
         template_name = 'student/forgot.html'), name='password_reset'),
