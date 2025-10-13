@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+
+    {% load static %}
+
+<head>
+
+    <link rel="stylesheet" href='{% static "css/style.css" %}'>
+    <link rel = "stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+
+</head>
+<body>
+
+    <div class="top_bar">
+        <ul class="horizontal_list">
+            <li><a class="links" href="{% url 'absence' %}">Faltas</a></li>
+            <li><a class="links" href="{% url 'score' %}">Notas</a></li>
+            <li><a class="links" href="{% url 'calendar' %}">Agenda</a></li>
+            <li><a class="links" href="{% url 'calendar' %}">Diretoria</a></li>
+            <li id = "Sair"><a class="links" href="{% url 'logout' %}">Sair Da Conta</a></li>
+        </ul>
+
+    </div>
+
+    <div  class = "principal_title">
+    <h1>CONNECT</h1>
+    </div>
+
+    <div id = "down_bar" class="bar"></div>
+
+</body>
+</html>

@@ -18,33 +18,40 @@ from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.urls import path
 
-from forum import views
+from student import views as studentViews
+from teacher import views as teacherViews
 
 urlpatterns = [
-    path('', views.login_page, name="login"),
+    path('', studentViews.login_page, name="login"),
 
-    path('register/',views.register_page, name="register"),
+    path('register/',studentViews.register_page, name="register"),
 
-    path('home/', views.home_page, name="home"),
+    path('home/', studentViews.home_page, name="home"),
 
     path('admin/', admin.site.urls, name="admin"),
 
-    path('absence/', views.absence_page, name="absence"),
+    path('absence/', studentViews.absence_page, name="absence"),
 
-    path('score/', views.score_page, name="score"),
+    path('score/', studentViews.score_page, name="score"),
 
-    path('logout/', views.logout_page, name="logout"),
+    path('calendar/', studentViews.calendar_page, name="calendar"),
+
+    path('logout/', studentViews.logout_page, name="logout"),
+
+    path('teacherlogin', teacherViews.GoToLogin, name ="teacherLogin"),
+
+    path('teacherHome', teacherViews.GoToHome, name = "teacherHome"),
 
     path('forgot_passwd/',auth_views.PasswordResetView.as_view(
-        template_name = 'forum/forgot.html'), name='password_reset'),
+        template_name = 'student/forgot.html'), name='password_reset'),
 
     path('forgot/passwd/<uidb64>/<token>/',auth_views.PasswordResetConfirmView.as_view(
-        template_name = 'forum/forgot_confirm.html'), name='password_reset_confirm'),
+        template_name = 'student/forgot_confirm.html'), name='password_reset_confirm'),
 
     path('forgot_passwd/send/', auth_views.PasswordResetDoneView.as_view(
-        template_name = 'forum/forgot_reset.html'), name='password_reset_done'),
+        template_name = 'student/forgot_reset.html'), name='password_reset_done'),
 
     path('forgot_passwd/complete', auth_views.PasswordResetCompleteView.as_view(
-        template_name = 'forum/forgot_complete.html'), name= 'password_reset_complete'),
+        template_name = 'student/forgot_complete.html'), name= 'password_reset_complete'),
 
 ]
