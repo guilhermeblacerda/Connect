@@ -40,7 +40,7 @@ urlpatterns = [
 
     path('teacherlogin', teacherViews.GoToLogin, name ="teacherLogin"),
 
-    path('teacherHome', teacherViews.GoToHome, name = "teacherHome"),
+    path('teacherhome', teacherViews.GoToHome, name = "teacherHome"),
 
     path('forgot_passwd/',auth_views.PasswordResetView.as_view(
         template_name = 'student/forgot.html'), name='password_reset'),

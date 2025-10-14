@@ -16,23 +16,19 @@
 </head>
 <body>
 
-<div id="sideBar" class="sideBar fechar">
+    <a class="links" href="{% url 'logout' %}">Sair Da Conta</a>
+
+    <div id="sideBar" class="sideBar fechar">
         <button onclick="toogleSideBar()">☰</button>
 
-    <ul>
-        <li></li>
-        <li></li>
-    </ul>
-
-</div>
-
-    <div>
-        <ul class="horizontal_list">
-            <li id = "Sair"><a class="links" href="{% url 'logout' %}">Sair Da Conta</a></li>
+        <ul>
+            <li></li>
+            <li></li>
         </ul>
+
     </div>
 
-    <div  class = "principal_title">
+    <div class = "principal_title">
         <h1>CONNECT</h1>
         <h2>Professores</h2>
     </div>
