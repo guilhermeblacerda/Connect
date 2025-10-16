@@ -34,16 +34,17 @@ table {
 }
 
 #Sair {
-  position: fixed;
+  position: absolute;
 
   user-select: none;
 
-  top: 5%;
-  left: 5%;
+  left: 20%;
 
   height: 28px;
   
   color: black;
+
+  top: 2%;
 
 }
 
@@ -53,6 +54,7 @@ table {
   position: absolute;
 
   height: 2px;
+
   width: 0;
 
   left: 50%;
@@ -163,6 +165,15 @@ table {
 
   font-family: 'Poppins',sans-serif;
 
+}
+
+#logo {
+  position: fixed;
+
+  height: 100px;
+  width: 100px;
+
+  left: 2vw;
 }
 
 .principal_title {

@@ -15,10 +15,14 @@
 </head>
 <body>
 
-    <a  id="Sair" class="links" href="{% url 'logout' %}">Sair Da Conta</a>
+    <a href="/home">
+        <img id = "logo" src ='{% static "images/LogoDoCesar.svg" %}'></img>
+    </a>
 
     <div id="sideBar" class="sideBar fechar">
         <button onclick="toogleSideBar()">☰</button>
+
+        <a  id="Sair" class="links" href="{% url 'logout' %}">Sair Da Conta</a>
 
         <ul>
             <li><a class="links" href="{% url 'absence' %}">Faltas</a></li>
