@@ -34,10 +34,41 @@ table {
 }
 
 #Sair {
-  position: absolute;
+  position: fixed;
 
   user-select: none;
 
+  top: 5%;
+  left: 5%;
+
+  height: 28px;
+  
+  color: black;
+
+}
+
+#Sair::after {
+  content: "";
+
+  position: absolute;
+
+  height: 2px;
+  width: 0;
+
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  background-color: black;
+
+  transition: 0.3s;
+  
+  bottom: 0;
+}
+
+#Sair:hover::after {
+
+  width: 50%;
 }
 
 #register {
@@ -266,6 +297,7 @@ table {
 
   text-shadow: none;
   text-decoration: none;
+  text-align: center;
 
   user-select: none;
 
