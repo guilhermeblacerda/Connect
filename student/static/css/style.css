@@ -44,7 +44,7 @@ table {
   
   color: black;
 
-  top: 2%;
+  bottom: 8vh;
 
 }
 
@@ -141,12 +141,18 @@ table {
 }
 
 #return {
-  position: absolute;
+  position: fixed;
 
-  left: 5%;
-  top: -10px;
+  left: 0;
+  top: 1vh;
 
-  transform: translate(-50%, -50%);
+  font-size: 30px;
+
+  transition: 0.3s;
+}
+
+#return:hover {
+  color: black;
 }
 
 #calendar {

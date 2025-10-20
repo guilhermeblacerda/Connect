@@ -38,9 +38,9 @@ urlpatterns = [
 
     path('logout/', studentViews.logout_page, name="logout"),
 
-    path('teacherlogin', teacherViews.GoToLogin, name ="teacherLogin"),
+    path('teacher/login', teacherViews.GoToLogin, name ="teacherLogin"),
 
-    path('teacherhome', teacherViews.GoToHome, name = "teacherHome"),
+    path('teacher/', teacherViews.GoToHome, name = "teacherHome"),
 
     path('forgot_passwd/',auth_views.PasswordResetView.as_view(
         template_name = 'student/forgot.html'), name='password_reset'),

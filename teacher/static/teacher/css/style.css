@@ -7,7 +7,39 @@ body {
 
   user-select: none;
 
-  transform: translate(1200px,0px);
+  left: 20%;
+
+  height: 28px;
+  
+  color: black;
+
+  bottom: 8vh;
+
+}
+
+#Sair::after {
+  content: "";
+
+  position: absolute;
+
+  height: 2px;
+
+  width: 0;
+
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  background-color: black;
+
+  transition: 0.3s;
+  
+  bottom: 0;
+}
+
+#Sair:hover::after {
+
+  width: 50%;
 }
 
 .principal_title {
@@ -59,7 +91,7 @@ body {
 }
 
 .links {
-  position: fixed;
+  position: absolute;
 
   color: #595643;
 
@@ -67,14 +99,11 @@ body {
 
   text-shadow: none;
   text-decoration: none;
+  text-align: center;
 
   user-select: none;
 
   width: 150px;
-
-    right: 86vw;
-
-  top: 4vh;
 }
 
 .bar {
