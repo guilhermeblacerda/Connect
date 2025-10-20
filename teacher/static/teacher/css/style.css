@@ -42,6 +42,15 @@ body {
   width: 50%;
 }
 
+#logo {
+  position: fixed;
+
+  height: 100px;
+  width: 100px;
+
+  left: 2vw;
+}
+
 .principal_title {
   color: #4e6b66;
 

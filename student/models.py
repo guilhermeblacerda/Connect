@@ -5,6 +5,10 @@ from multiselectfield import MultiSelectField
 class Serie(models.Model):
     nome = models.CharField(max_length=50)
 
+    @classmethod
+    def criar(cls,nome):
+        return cls.objects.create(nome=nome)
+
     def __str__(self):
         return self.nome
 
@@ -23,6 +27,14 @@ class Materia(models.Model):
     serie = models.ForeignKey(Serie, on_delete=models.CASCADE)
     dias = MultiSelectField(choices=Dias_semana,blank=True, default=list)
 
+    @classmethod
+    def criar(cls,nome,serie,dias):
+        return cls.objects.create(
+            nome = nome,
+            serie = serie,
+            dias = dias
+        )
+
     def get_dias(self):
         lista = []
 
@@ -39,6 +51,17 @@ class Aluno(models.Model):
     serie = models.ForeignKey(Serie,on_delete=models.CASCADE)
     materias = models.ManyToManyField(Materia,related_name='alunos')
 
+    @classmethod
+    def criar(cls,user,serie,materias):
+        aluno = cls.objects.create(
+            user = user,
+            serie = serie,
+        )
+
+        aluno.materias.set(materias)
+
+        return aluno    
+
     def __str__(self):
         return f"{self.user} - {self.serie.nome}"
     
@@ -48,6 +71,16 @@ class Nota(models.Model):
     serie = models.ForeignKey(Serie,on_delete=models.CASCADE)
     media = models.FloatField()
     data = models.DateField()
+
+    @classmethod
+    def criar(cls,aluno,materia,serie,media,data):
+        return cls.objects.create(
+            aluno = aluno,
+            materia = materia,
+            serie = serie,
+            media = media,
+            data = data
+        )
 
     def __str__(self):
         return f"{self.materia.nome} - {self.aluno} {self.serie} - {self.data}"
@@ -59,6 +92,17 @@ class Avaliacao(models.Model):
     nota = models.FloatField()
     data = models.DateField()
 
+    @classmethod
+    def criar(cls,aluno,materia,numero,nota,data):
+        return cls.objects.create(
+            aluno = aluno,
+            materia = materia,
+            numero = numero,
+            nota = nota,
+            data = data
+        )
+        
+
     def __str__(self):
         return f"avaliação {self.numero} de {self.materia} - {self.aluno.user} - {self.data}"
     
@@ -68,6 +112,16 @@ class Falta(models.Model):
     data = models.DateField()
     justificada = models.BooleanField(default=False)
     comentario = models.TextField(blank=True,default="-")
+
+    @classmethod
+    def criar(cls,aluno,materia,data,justificada,comentario):
+        return cls.objects.create(
+            aluno = aluno,
+            materia = materia,
+            data = data,
+            justificada = justificada,
+            comentario = comentario
+        )
 
     def __str__(self):
         return f"{self.materia.nome} - {self.data} - {str(self.aluno.user)}"
