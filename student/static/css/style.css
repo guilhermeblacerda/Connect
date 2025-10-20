@@ -110,18 +110,22 @@ table {
 }
 
 #register_username {
+  position: fixed;
   left: 50%;
-  bottom: 21%;
+  bottom: 25vh;
 }
 
 #register_email {
+  position: fixed;
   left: 50%;
-  bottom: 90px;
+  bottom: 14vh;
+  
 }
 
 #register_password {
+  position: fixed;
   left: 50%;
-  bottom: 10px;
+  bottom: 4vh;
 }
 
 #login_error {
