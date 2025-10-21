@@ -125,5 +125,15 @@ class Falta(models.Model):
 
     def __str__(self):
         return f"{self.materia.nome} - {self.data} - {str(self.aluno.user)}"
+    
+class Mensagem(models.Model):
+    remetente = models.ForeignKey(User, related_name='mensagens_enviadas',on_delete=models.CASCADE)
+    destinatario = models.ForeignKey(User, related_name='mensagens_recebidas',on_delete=models.CASCADE)
+    texto = models.TextField()
+    data_envio = models.DateTimeField(auto_now_add=True)
+    lida = models.BooleanField(default=False)
 
+    def __str__(self):
+        return f"{self.remetente} -> {self.destinatario}: {self.texto[:20]}"
+    
 # Create your models here.

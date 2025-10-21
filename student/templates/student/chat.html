@@ -1,0 +1,32 @@
+<h2>Chat</h2>
+
+<div>
+    {% if usuarios %}
+        <h3>Contatos:</h3>
+        <ul>
+            {% for u in usuarios %}
+            <li><a href="{% url 'chat' u.id %}">
+                {{ u.username }}
+                {% if u.toRead > 0 %}
+                    {{ u.toRead }}
+                {% endif %}
+            </a></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</div>
+
+{% if destinatario %}
+<h3>Conversa com {{ destinatario.username }}</h3>
+<div id="chat-box" style="border:1px solid #ccc; padding:10px; height:300px; overflow-y:scroll;">
+    {% for m in mensagens %}
+        <p><strong>{{ m.remetente.username }}:</strong> {{ m.texto }}</p>
+    {% endfor %}
+</div>
+
+<form method="post">
+    {% csrf_token %}
+    <input type="text" name="mensagem" placeholder="Digite aqui">
+    <button type="submit">Enviar</button>
+</form>
+{% endif %}

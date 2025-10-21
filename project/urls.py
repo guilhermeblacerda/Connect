@@ -42,6 +42,10 @@ urlpatterns = [
 
     path('teacher/', teacherViews.GoToHome, name = "teacherHome"),
 
+    path('chat/', studentViews.chat_page , name = "chat"),
+
+    path('chat/<int:usuario_id>/', studentViews.chat_page, name='chat'), 
+
     path('forgot_passwd/',auth_views.PasswordResetView.as_view(
         template_name = 'student/forgot.html'), name='password_reset'),
 

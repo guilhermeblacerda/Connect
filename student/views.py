@@ -2,7 +2,8 @@ from django.shortcuts import render,redirect
 
 from django.contrib.auth import login,authenticate,logout
 from django.contrib.auth.models import User
-from .models import Falta,Nota,Avaliacao,Aluno,Materia
+from django.db.models import Count,Q
+from .models import Falta,Nota,Avaliacao,Aluno,Materia,Mensagem
 import json
 
 def home_page(request):
@@ -96,5 +97,42 @@ def calendar_page(request):
         return render(request,'student/calendar.html',{'materias': materias,'eventos': json.dumps(eventos)})
 
     return render(request,'student/calendar.html')
+
+def chat_page(request,usuario_id=None):
+    user = request.user
+    mensagens = []
+    destinatario = None
+
+    if user.is_staff:
+        usuarios = User.objects.exclude(is_staff=True)
+        usuarios = usuarios.annotate(
+            toRead = Count('mensagens_enviadas',filter=Q(mensagens_enviadas__destinatario=user,mensagens_enviadas__lida=False))
+        )
+    else:
+        usuarios = None
+        usuario_id = 1
+
+    if usuario_id:
+        destinatario = User.objects.get(id=usuario_id)
+
+        Mensagem.objects.filter(
+            remetente__in=[user,destinatario],
+            destinatario__in=[user, destinatario]
+        ).update(lida=True)
+
+        mensagens = Mensagem.objects.filter(
+            remetente__in=[user,destinatario],
+            destinatario__in=[user, destinatario]
+        ).order_by('data_envio','id')
+
+
+
+    if request.method == 'POST':
+        texto = request.POST.get('mensagem')
+        if destinatario and texto:
+            Mensagem.objects.create(remetente=user,destinatario=destinatario,texto=texto)
+            return redirect('chat',usuario_id=destinatario.id)  
+        
+    return render(request,'student/chat.html', {'mensagens': mensagens,'destinatario':destinatario, 'usuarios':usuarios})
 
 # Create your views here.
