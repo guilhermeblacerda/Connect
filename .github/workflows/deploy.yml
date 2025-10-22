@@ -29,6 +29,13 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y firefox
           pip install geckodriver-autoinstaller
+        
+      - name: Setup Xvfb
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y xvfb
+          export DISPLAY=:99
+          Xvfb :99 -screen 0 1920x1080x24 &
 
       - name: Run Django tests
         run: |
