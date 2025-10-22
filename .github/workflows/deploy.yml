@@ -38,3 +38,24 @@ jobs:
         run: |
           python manage.py test
           echo "Testes concluidos"
+
+  deploy:
+    neds: test
+    runs-on: ubuntu-latest
+
+    steps:
+    
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Trigger Render Deploy
+        env:
+          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+          RENDER_SERVICE_ID: ${{ secrets.RENDER_SERVICE_ID }}
+        run: |
+          echo "Disparando deploy no Render..."
+          curl -X POST \
+            -H "Accept: application/json" \
+            -H "Authorization: Bearer $RENDER_API_KEY" \
+            -H "Content-Type: application/json" \
+            https://api.render.com/deploy/srv-${RENDER_SERVICE_ID}
