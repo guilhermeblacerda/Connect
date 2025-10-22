@@ -34,4 +34,11 @@ Link do screencast do deployment : https://youtu.be/NUaPRvM9bE0
 
 Link do arquivo com o relatório da programação em par : https://docs.google.com/document/d/1IShEEUbqWfifDA5PFipxCwP6wHIWXmyDP816K3ICCTc/edit?usp=sharing
 
+Entrega 03 - 22/10
+
+Prints do Jira: <img width="1548" height="354" alt="Captura de tela 2025-10-22 093406" src="https://github.com/user-attachments/assets/88ba9cea-c6f5-4d43-9648-59d0773e12e3" />
+<img width="1395" height="236" alt="Captura de tela 2025-10-22 093433" src="https://github.com/user-attachments/assets/d4a34252-eea8-4e7f-ba8a-65940fe08ea7" />
+
+Relatório de programação em par incrementado: https://docs.google.com/document/d/1IShEEUbqWfifDA5PFipxCwP6wHIWXmyDP816K3ICCTc/edit?usp=sharing
+
 
