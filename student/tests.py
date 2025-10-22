@@ -8,13 +8,10 @@ from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 from django.contrib.auth.models import User
-import geckodriver_autoinstaller
 import time
 from .models import *
 
 import time
-
-geckodriver_autoinstaller.install()
 
 class LoginE2ETeste(LiveServerTestCase):
 
@@ -22,8 +19,8 @@ class LoginE2ETeste(LiveServerTestCase):
     def setUpClass(cls):
         super().setUpClass()
         options = Options()
-        options.headless = True 
-        cls.browser = webdriver.Firefox(options=options)
+        options.headless = True
+        cls.browser = webdriver.Chrome(options=options)
 
     @classmethod
     def tearDownClass(cls):  

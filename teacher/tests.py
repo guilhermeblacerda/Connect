@@ -7,7 +7,6 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.firefox.options import Options
-import geckodriver_autoinstaller
 from django.contrib.auth.models import User
 import time
 
@@ -15,17 +14,14 @@ from student.models import Serie,Materia,Aluno,Avaliacao,Media
 from student.tests import *
 from .models import *
 
-geckodriver_autoinstaller.install()
-
 class LoginE2ETeste(LiveServerTestCase):
 
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
         options = Options()
-        options.headless = True 
-        cls.browser = webdriver.Firefox(options=options)
-
+        options.headless = True
+        cls.browser = webdriver.Chrome(options=options)
 
     @classmethod
     def tearDownClass(cls):  
