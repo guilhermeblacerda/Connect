@@ -33,3 +33,8 @@ jobs:
           python manage.py runserver &
           sleep 5
           echo "Django server started"
+
+      - name: Run E2E Tests
+        run: |
+          python manage.py test
+          echo "Testes concluidos"
