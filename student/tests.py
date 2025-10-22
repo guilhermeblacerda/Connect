@@ -33,8 +33,13 @@ class LoginE2ETeste(LiveServerTestCase):
     def setUpClass(cls):
         super().setUpClass()
         options = Options()
-        options.headless = True
-        cls.browser = cls.criar_driver()
+        options.add_argument('--headless')
+        options.add_argument('--no-sandbox')
+        options.add_argument('--disable-dev-shm-usage')
+        
+        service = Service(ChromeDriverManager().install())
+        cls.browser = webdriver.Chrome(service=service, options=options)
+        cls.browser.implicitly_wait(10)
 
     @classmethod
     def tearDownClass(cls):  
