@@ -1,4 +1,4 @@
-name: Django CI/CD with Selenium
+name: Django CI with Selenium
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - dev
 
 jobs:
-  test-and-deploy:
+  test:
     runs-on: ubuntu-latest
 
     steps:
@@ -20,15 +20,19 @@ jobs:
 
       - name: Install dependencies
         run: |
+          sudo apt-get update
+          sudo apt-get install -y unzip libnss3 libxss1 libappindicator3-1 fonts-liberation
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          sudo apt-get install -y unzip xvfb libnss3 libxss1 libappindicator3-1 fonts-liberation
 
-      - name: Install Chrome
-        run: |
-          sudo apt-get install -y google-chrome-stable
-          sudo apt install -y chromium-chromedriver
+      - name: Setup Chrome
+        uses: browser-actions/setup-chrome@latest
+
+      - name: Setup ChromeDriver
+        uses: browser-actions/setup-chromedriver@latest
 
       - name: Run Django tests
+        env:
+          DJANGO_SETTINGS_MODULE: Connect.settings
         run: |
-          python manage.py test    
+          python manage.py test
