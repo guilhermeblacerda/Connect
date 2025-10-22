@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notas</title>
 
+    <link rel="icon" href="{% static 'images/LogoDoCesar.svg' %}" type="image/svg+xml">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
 
@@ -45,9 +46,15 @@
 
                 <tr>
                     <th>{{ materia.nome }}</th>
-                    <th>{{ nota.media }}</th>
-                    <th>{{ materia.serie }}</th>
-                    <th>{{ nota.data }}</th>
+                    <th>
+                        {% for media in medias %}
+                            {% if media.materia.id == materia.id %}
+                                {{ media.valor }}
+                            {% endif %}
+                        {% endfor %}
+                    </th>
+                    <th>{{ aluno.serie }}</th>
+                    <th></th>
                 </tr>
 
                 <tr>
@@ -63,7 +70,7 @@
                                     <tr>
                                         <th>avaliação {{ avaliacao.numero }}</th>
                                         <th>{{ avaliacao.nota }}</th>
-                                        <th></th>
+                                        <th>{{ avaliacao.data }}</th>
                                     </tr>
                                     {% endif %}
                                     {% endfor %}

@@ -54,7 +54,7 @@ class LoginE2ETeste(LiveServerTestCase):
             expected_conditions.url_contains("home")
         )   
 
-        return user     
+        return user
     
     def test_register_login(self):
 

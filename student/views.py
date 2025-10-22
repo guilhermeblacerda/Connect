@@ -3,7 +3,7 @@ from django.shortcuts import render,redirect
 from django.contrib.auth import login,authenticate,logout
 from django.contrib.auth.models import User
 from django.db.models import Count,Q
-from .models import Falta,Nota,Avaliacao,Aluno,Materia,Mensagem
+from .models import Falta,Avaliacao,Aluno,Materia,Mensagem,Media
 import json
 
 def home_page(request):
@@ -72,8 +72,9 @@ def score_page(request):
     if aluno:
         materias = aluno.materias.all()
         avaliacoes = Avaliacao.objects.filter(aluno__user=request.user).order_by('-data')
+        medias = aluno.medias.all()
 
-        return render(request, 'student/score.html',{'materias': materias,'avaliacoes': avaliacoes})
+        return render(request, 'student/score.html',{'materias': materias,'avaliacoes': avaliacoes,'aluno':aluno,'medias':medias})
 
     return render(request, 'student/score.html')
 
@@ -124,8 +125,6 @@ def chat_page(request,usuario_id=None):
             remetente__in=[user,destinatario],
             destinatario__in=[user, destinatario]
         ).order_by('data_envio','id')
-
-
 
     if request.method == 'POST':
         texto = request.POST.get('mensagem')

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    {% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar notas</title>
+
+    <link rel="icon" href="{% static 'images/LogoDoCesar.svg' %}" type="image/svg+xml">
+    <link rel="stylesheet" href='{% static "teacher/css/style.css" %}'>
+    <link rel = "stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">    
+
+</head>
+<body style="margin: 0;">
+    
+    {% if not selectedGrade %}
+    <div id = topBar>
+        <a id="return" class='links' href="{% url 'teacherHome' %}">&larr;</a>
+
+        <h2 id="absenceGuide" >Escolha uma turma para gerenciar notas:</h3>
+    </div>
+
+    <div id = "listaMaterias">
+        <ul>
+            {% for materia, serie in materias_series%}
+            <li>
+
+                <a class="links" href="{% url 'teacherScoreDetail' serie.id materia.id %}">{{ materia.nome }} - {{ serie.nome }}</a>
+
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+    
+    {% if selectedGrade and not selectedStudent %}
+    <div id = topBar>
+        <a id="return" class='links' href="{% url 'teacherHome' %}">&larr;</a>
+
+        <h2 id="absenceGuide" >Escolha o aluno que recebera a nota:</h3>
+    </div>
+
+    <div id = listaMaterias>
+        <ul>
+        {% for aluno in alunos %}
+            <li>
+
+                <a class="links" href="{{ request.path }}{{aluno.id}}/">{{aluno.user}}</a>
+                
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+    {% if selectedGrade and selectedStudent %}
+
+        {% for materia, serie in materias_series %}
+        <div id = topBar>
+            <a id="return" class='links' href="{% url 'teacherHome' %}">&larr;</a>
+
+            <h2 id="absenceGuide" >Adicione avaliações - {{ materia.nome }} / {{ serie.nome }}:</h3>
+        </div>
+        {% endfor %}
+
+    <form id="avaliacaoForm" method="POST">
+    {% csrf_token %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Aluno</th>
+                    <th id = "nota">Nota</th>
+                    <th id = "data">Data da avaliação</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ alunos.user.username }}</td>
+                    <td>
+                        <input type="number" name="nota" step="0.1" min="0" max="10">
+                    </td>
+                    <td>
+                        <input type="date" name="data">
+                    </td>
+                </tr>
+                
+            </tbody>
+        </table>
+        <button id="submitButton" type="submit" name="avaliacaoButton" value=1>Salvar</button>
+    </form>
+
+    {% for materia, serie in materias_series %}
+
+        <div id = topBar>
+            <h2 id="absenceGuide" >Defina a media do aluno - {{ materia.nome }} / {{ serie.nome }}:</h3>
+        </div>
+
+    {% endfor %}
+
+    <form id="avaliacaoForm" method="POST">
+    {% csrf_token %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Aluno</th>
+                    <th>Media</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ alunos.user.username }}</td>
+                    <td>
+                        <input type="number" name="media" step="0.1" min="0" max="10">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <button id="submitButton" type="submit" name="mediaButton" value=1>Salvar</button>
+    </form>
+
+    {% endif %}
+
+</body>
+</html>

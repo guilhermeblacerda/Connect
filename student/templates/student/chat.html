@@ -1,8 +1,35 @@
-<h2>Chat</h2>
+<!DOCTYPE html>
+<html lang="en">
 
-<div>
+    {% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+
+    <link rel="icon" href="{% static 'images/LogoDoCesar.svg' %}" type="image/svg+xml">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel = "stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
+</head>
+
+<body id = chatBody>
+
+    <div  class = "principal_title">
+        <h1>CONNECT</h1>
+        <h2>chat</h2>
+    </div>
+
+    {% if not request.user.is_staff %}
+
+    <a id="chatReturn" href="{% url 'home' %}">&larr;</a>
+
+    {% endif %}
+
     {% if usuarios %}
-        <h3>Contatos:</h3>
+    <div id = "contatos">
+        <a id="chatReturn" href="{% url 'home' %}">&larr;</a>
+        <h3>Usuarios</h3>
         <ul>
             {% for u in usuarios %}
             <li><a href="{% url 'chat' u.id %}">
@@ -13,20 +40,30 @@
             </a></li>
             {% endfor %}
         </ul>
+    </div>
     {% endif %}
-</div>
 
-{% if destinatario %}
-<h3>Conversa com {{ destinatario.username }}</h3>
-<div id="chat-box" style="border:1px solid #ccc; padding:10px; height:300px; overflow-y:scroll;">
-    {% for m in mensagens %}
-        <p><strong>{{ m.remetente.username }}:</strong> {{ m.texto }}</p>
-    {% endfor %}
-</div>
+    {% if destinatario %}
+    <div id = "chatArea">
+        {% if destinatario.username == "stackadmin" %}
+            <h3>Conversa com Diretoria</h3>
+        {% else %}
+            <h3>Conversa com {{ destinatario.username }}</h3>
+        {% endif %}
+        <div id="chat-box" style="border:2px solid #ccc; padding:10px; height:300px; overflow-y:scroll;">
+            {% for m in mensagens %}
+                <p><strong>{{ m.remetente.username }}:</strong> {{ m.texto }}</p>
+            {% endfor %}
+        </div>
 
-<form method="post">
-    {% csrf_token %}
-    <input type="text" name="mensagem" placeholder="Digite aqui">
-    <button type="submit">Enviar</button>
-</form>
-{% endif %}
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" name="mensagem" placeholder="Digite aqui">
+        </form>
+    </div>
+    {% endif %}
+
+        
+
+</body>
+</html>

@@ -2,16 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from multiselectfield import MultiSelectField
 
-class Serie(models.Model):
-    nome = models.CharField(max_length=50)
-
-    @classmethod
-    def criar(cls,nome):
-        return cls.objects.create(nome=nome)
-
-    def __str__(self):
-        return self.nome
-
 class Materia(models.Model):
     Dias_semana = (
         ('0','Domingo'),
@@ -24,16 +14,17 @@ class Materia(models.Model):
     )
 
     nome = models.CharField(max_length=50)
-    serie = models.ForeignKey(Serie, on_delete=models.CASCADE)
     dias = MultiSelectField(choices=Dias_semana,blank=True, default=list)
 
     @classmethod
-    def criar(cls,nome,serie,dias):
-        return cls.objects.create(
+    def criar(cls,nome,dias):
+        materia = cls.objects.create(
             nome = nome,
-            serie = serie,
             dias = dias
         )
+        materia.save()
+
+        return materia
 
     def get_dias(self):
         lista = []
@@ -44,8 +35,21 @@ class Materia(models.Model):
         return lista
 
     def __str__(self):
-        return f"{self.nome} - {self.serie.nome}"
+        return f"{self.nome}"
     
+class Serie(models.Model):
+    nome = models.CharField(max_length=50)
+    materia = models.ManyToManyField(Materia)
+
+    @classmethod
+    def criar(cls,nome,materia):
+        serie = cls.objects.create(nome=nome)
+        serie.materia.add(materia)
+
+    def __str__(self):
+        return self.nome
+
+
 class Aluno(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     serie = models.ForeignKey(Serie,on_delete=models.CASCADE)
@@ -65,25 +69,22 @@ class Aluno(models.Model):
     def __str__(self):
         return f"{self.user} - {self.serie.nome}"
     
-class Nota(models.Model):
-    aluno = models.ForeignKey(Aluno,on_delete=models.CASCADE)
-    materia = models.ForeignKey(Materia,on_delete=models.CASCADE)
-    serie = models.ForeignKey(Serie,on_delete=models.CASCADE)
-    media = models.FloatField()
-    data = models.DateField()
+class Media(models.Model):
+    aluno = models.ForeignKey(Aluno, on_delete=models.CASCADE, related_name='medias')
+    materia = models.ForeignKey(Materia, on_delete=models.CASCADE, related_name='medias')
+    valor = models.FloatField()
 
     @classmethod
-    def criar(cls,aluno,materia,serie,media,data):
+    def criar(cls,aluno,materia,valor):
         return cls.objects.create(
             aluno = aluno,
             materia = materia,
-            serie = serie,
-            media = media,
-            data = data
+            valor = valor
         )
 
     def __str__(self):
-        return f"{self.materia.nome} - {self.aluno} {self.serie} - {self.data}"
+            return f"{self.aluno.user.username} - {self.materia.nome}: {self.valor}"
+
     
 class Avaliacao(models.Model):
     aluno = models.ForeignKey(Aluno,on_delete=models.CASCADE,related_name='aluno')

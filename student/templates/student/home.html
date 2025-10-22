@@ -5,6 +5,7 @@
 
 <head>
 
+    <link rel="icon" href="{% static 'images/LogoDoCesar.svg' %}" type="image/svg+xml">
     <link rel="stylesheet" href='{% static "css/style.css" %}'>
     <link rel = "stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
 
@@ -19,6 +20,11 @@
         <img id="logo" src ='{% static "images/LogoDoCesar.svg" %}'></img>
     </a>
 
+    <div  class = "principal_title">
+        <h1>CONNECT</h1>
+        <h2>alunos</h2>
+    </div>
+
     <div id="sideBar" class="sideBar fechar">
         <button onclick="toogleSideBar()">☰</button>
 
@@ -28,13 +34,8 @@
             <li><a name = "absence" class="links" href="{% url 'absence' %}">Faltas</a></li>
             <li><a name = "score" class="links" href="{% url 'score' %}">Notas</a></li>
             <li><a name = "calendar" class="links" href="{% url 'calendar' %}">Agenda</a></li>
-            <li><a class="links" href="{% url 'calendar' %}">Diretoria</a></li>
+            <li><a class="links" href="{% url 'chat' %}">Diretoria</a></li>
         </ul>
-    </div>
-
-    <div  class = "principal_title">
-        <h1>CONNECT</h1>
-        <h2>alunos</h2>
     </div>
 
     <div id = "down_bar" class="bar"></div>
