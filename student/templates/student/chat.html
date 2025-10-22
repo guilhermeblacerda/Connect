@@ -56,10 +56,20 @@
             {% endfor %}
         </div>
 
-        <form method="post">
-            {% csrf_token %}
-            <input type="text" name="mensagem" placeholder="Digite aqui">
-        </form>
+    
+    <form method="post" id="form-texto">
+        {% csrf_token %}
+        <input type="text" name="mensagem" placeholder="Digite aqui" autocomplete="off">
+        <button type="submit">Enviar</button>
+    </form>
+
+   
+    <form method="post" id="form-solicitacoes">
+        {% csrf_token %}
+        <button type="submit" name="documentos" value="Solicito Documentação">Solicito Documentos</button>
+        <button type="submit" name="dispensa" value="Solicito Dispensa">Solicitar Dispensa</button>
+    </form>
+</div>
     </div>
     {% endif %}
 

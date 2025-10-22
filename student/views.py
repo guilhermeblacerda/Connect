@@ -111,7 +111,7 @@ def chat_page(request,usuario_id=None):
         )
     else:
         usuarios = None
-        usuario_id = 1
+        usuario_id = User.objects.get(username="stackadmin").id
 
     if usuario_id:
         destinatario = User.objects.get(id=usuario_id)
@@ -127,10 +127,20 @@ def chat_page(request,usuario_id=None):
         ).order_by('data_envio','id')
 
     if request.method == 'POST':
+        documentos = request.POST.get("documentos")
+        dispensa = request.POST.get("dispensa")
         texto = request.POST.get('mensagem')
-        if destinatario and texto:
-            Mensagem.objects.create(remetente=user,destinatario=destinatario,texto=texto)
-            return redirect('chat',usuario_id=destinatario.id)  
+        print(texto)
+
+        if destinatario:
+            if documentos:
+                Mensagem.objects.create(remetente=user,destinatario=destinatario,texto=documentos)
+            elif dispensa:
+                Mensagem.objects.create(remetente=user,destinatario=destinatario,texto=dispensa)
+            elif texto:
+                Mensagem.objects.create(remetente=user,destinatario=destinatario,texto=texto) 
+            
+            return redirect('chat', usuario_id=destinatario.id)
         
     return render(request,'student/chat.html', {'mensagens': mensagens,'destinatario':destinatario, 'usuarios':usuarios})
 

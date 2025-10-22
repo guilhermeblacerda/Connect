@@ -143,53 +143,55 @@ def GoToScore(request,serieId=None,materiaId=None,alunoId=None):
         
         if alunoId:
             selectedStudent = True
-            alunos = Aluno.objects.get(id=alunoId)
+            aluno = Aluno.objects.get(id=alunoId)
             materias_series = [(Materia.objects.get(id=materiaId),Serie.objects.get(id=serieId))]
 
-    if request.method == "POST":
-        avaliacaoButton = request.POST.get('avaliacaoButton')
-        mediaButton = request.POST.get('mediaButton')
-        adicionarButton = request.POST.get('adicionarButton')
+        if request.method == "POST":
+            avaliacaoButton = request.POST.get('avaliacaoButton')
+            mediaButton = request.POST.get('mediaButton')
+            adicionarButton = request.POST.get('adicionarButton')
 
-        if adicionarButton and not alunoId:
+            if adicionarButton and not alunoId:
+                nome = request.POST.get("nome")
 
-            nome = request.POST.get("nome")
+                if nome:
+                    username = gerar_username_unico(nome)
+                    aluno_user = User.objects.create_user(username=username, password="senha_padrao123")
 
-            if nome:
-                username = gerar_username_unico(nome)
-                aluno_user = User.objects.create_user(username=username, password="senha_padrao123")
+                    aluno = Aluno.criar(
+                        aluno_user,
+                        serie,
+                        [materia]
+                    )
 
-                aluno = Aluno.objects.create(
-                user=aluno_user,
-                serie=serie
+                    return redirect('teacherScoreDetail', serieId=serie.id, materiaId=materia.id)
+
+            if avaliacaoButton:
+                nota = request.POST.get("nota")
+                data = request.POST.get("data")
+
+                num_avaliacoes = Avaliacao.objects.filter(aluno=aluno, materia=materia).count() + 1
+
+                Avaliacao.criar(
+                    aluno,
+                    Materia.objects.get(id=materiaId),
+                    num_avaliacoes,
+                    nota,
+                    data
                 )
-
-                aluno.materias.add(materia)    
 
                 return redirect('teacherScoreDetail', serieId=serie.id, materiaId=materia.id)
 
-        if avaliacaoButton:
-            nota = request.POST.get("nota")
-            data = request.POST.get("data")
+            if mediaButton:
+                media = request.POST.get("media")
 
-            Avaliacao.criar(
-                alunos,
-                Materia.objects.get(id=materiaId),
-                Avaliacao.objects.filter(aluno=alunos, materia=materia).count()+1,
-                nota,
-                data
-            )
-
-        if mediaButton:
-            media = request.POST.get("media")
-
-            Media.criar(
-                alunos,
-                Materia.objects.get(id=materiaId),
-                media
-            )
-            
-        return redirect('teacherScore')
+                Media.criar(
+                    aluno,
+                    Materia.objects.get(id=materiaId),
+                    media
+                )
+                
+                return redirect('teacherScoreDetail', serieId=serie.id, materiaId=materia.id)
 
 
     return render(request,"teacher/score.html",{

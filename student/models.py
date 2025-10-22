@@ -89,7 +89,7 @@ class Media(models.Model):
 
     
 class Avaliacao(models.Model):
-    aluno = models.ForeignKey(Aluno,on_delete=models.CASCADE,related_name='aluno')
+    aluno = models.ForeignKey(Aluno,on_delete=models.CASCADE,related_name='avaliacoes')
     materia = models.ForeignKey(Materia,on_delete=models.CASCADE)
     numero = models.IntegerField() 
     nota = models.FloatField()
