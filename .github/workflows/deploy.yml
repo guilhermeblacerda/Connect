@@ -40,11 +40,11 @@ jobs:
           echo "Testes concluidos"
 
   deploy:
-    neds: test
+    needs: test
     runs-on: ubuntu-latest
 
     steps:
-    
+
       - name: Checkout code
         uses: actions/checkout@v3
 
