@@ -16,7 +16,7 @@
 <body style="margin: 0;">
     
     {% if not selectedGrade %}
-    <div id = topBar>
+    <div name="ScoreGuide" id = topBar>
         <a id="return" class='links' href="{% url 'teacherHome' %}">&larr;</a>
 
         <h2 id="absenceGuide" >Escolha uma turma para gerenciar notas:</h3>
@@ -27,7 +27,7 @@
             {% for materia, serie in materias_series%}
             <li>
 
-                <a class="links" href="{% url 'teacherScoreDetail' serie.id materia.id %}">{{ materia.nome }} - {{ serie.nome }}</a>
+                <a name="{{materia.nome}}{{serie.nome}}" class="links" href="{% url 'teacherScoreDetail' serie.id materia.id %}">{{ materia.nome }} - {{ serie.nome }}</a>
 
             </li>
             {% endfor %}
@@ -36,8 +36,12 @@
     {% endif %}
     
     {% if selectedGrade and not selectedStudent %}
-    <div id = topBar>
-        <a id="return" class='links' href="{% url 'teacherHome' %}">&larr;</a>
+    <div name="ScoreGuideStudents" id = topBar>
+        <a id="return" class='links' href="{% url 'teacherScore' %}">&larr;</a>
+
+        {% for aluno in alunos %}
+            <p></p>
+        {% endfor %}
 
         <h2 id="absenceGuide" >Escolha o aluno que recebera a nota:</h3>
     </div>
@@ -47,12 +51,33 @@
         {% for aluno in alunos %}
             <li>
 
-                <a class="links" href="{{ request.path }}{{aluno.id}}/">{{aluno.user}}</a>
+                <a name="{{aluno.user}}" class="links" href="{{ request.path }}{{aluno.id}}/">{{aluno.user}}</a>
                 
             </li>
         {% endfor %}
         </ul>
     </div>
+    <div id="absenceGuide" id = topBar>
+
+        <h2 >Registre um aluno:</h3>
+    </div>
+    <form id="avaliacaoForm" method="POST">
+        {% csrf_token %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Aluno</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <input type="text" name="nome">
+                        </td>                    
+                </tbody>
+            </table>
+            <button id="submitButton" type="submit" name="adicionarButton" value=1>Salvar</button>
+        </form>
     {% endif %}
 
     {% if selectedGrade and selectedStudent %}

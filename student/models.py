@@ -46,6 +46,8 @@ class Serie(models.Model):
         serie = cls.objects.create(nome=nome)
         serie.materia.add(materia)
 
+        return serie
+
     def __str__(self):
         return self.nome
 
@@ -56,13 +58,13 @@ class Aluno(models.Model):
     materias = models.ManyToManyField(Materia,related_name='alunos')
 
     @classmethod
-    def criar(cls,user,serie,materias):
+    def criar(cls,user,serie,materia):
         aluno = cls.objects.create(
             user = user,
             serie = serie,
         )
 
-        aluno.materias.set(materias)
+        aluno.materias.set(materia)
 
         return aluno    
 

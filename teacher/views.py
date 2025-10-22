@@ -1,8 +1,20 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login,authenticate,logout
+from django.contrib.auth.models import User
 from student.models import Serie,Materia,Aluno,Falta,Avaliacao,Media
 from django.utils import timezone
+from django.utils.text import slugify
 from .models import Teacher
+
+def gerar_username_unico(nome):
+    base = slugify(nome)
+    username = base
+    i = 1
+    while User.objects.filter(username=username).exists():
+        username = f"{base}{i}"
+        i += 1
+    print(f"Gerando username único: {username}")  
+    return username
 
 def GoToLogin(request):
     context = {}
@@ -137,6 +149,24 @@ def GoToScore(request,serieId=None,materiaId=None,alunoId=None):
     if request.method == "POST":
         avaliacaoButton = request.POST.get('avaliacaoButton')
         mediaButton = request.POST.get('mediaButton')
+        adicionarButton = request.POST.get('adicionarButton')
+
+        if adicionarButton and not alunoId:
+
+            nome = request.POST.get("nome")
+
+            if nome:
+                username = gerar_username_unico(nome)
+                aluno_user = User.objects.create_user(username=username, password="senha_padrao123")
+
+                aluno = Aluno.objects.create(
+                user=aluno_user,
+                serie=serie
+                )
+
+                aluno.materias.add(materia)    
+
+                return redirect('teacherScoreDetail', serieId=serie.id, materiaId=materia.id)
 
         if avaliacaoButton:
             nota = request.POST.get("nota")

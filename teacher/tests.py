@@ -70,10 +70,138 @@ class LoginE2ETeste(LiveServerTestCase):
         link = self.browser.find_element(By.NAME, "absence")
         link.click()
 
-        link = self.browser.find_element(By.NAME, f"{self.materia.nome}{self.serie.nome}")
+        WebDriverWait(self.browser, 10).until(
+            expected_conditions.presence_of_element_located((By.ID,"absenceGuide"))
+        ) 
+
+        link = self.browser.find_element(By.NAME, f"{materia.nome}{serie.nome}")
         link.click()
 
+        WebDriverWait(self.browser, 10).until(
+            expected_conditions.presence_of_element_located((By.NAME,"ausentes"))
+        ) 
 
+        checkbox = self.browser.find_element(By.NAME, 'ausentes')
 
+        if not checkbox.is_selected():
+            checkbox.click()
+
+        button = self.browser.find_element(By.ID,"submitButton")
+        button.click()
+
+    def test_RegisterStudent(self):
+
+        user = User.objects.create_user(username='teste', password='123456')
+
+        materia = Materia.criar('matematica', ['1'])
+
+        serie = Serie.criar('1º ano',materia)
+
+        professor = Teacher.criar(user, [materia], [serie])
+
+        self.loginAsTeacher()
+
+        button = self.browser.find_element(By.TAG_NAME,"button")
+        button.click()
+
+        link = self.browser.find_element(By.NAME, "score")
+        link.click()
+
+        WebDriverWait(self.browser, 10).until(
+            expected_conditions.presence_of_element_located((By.NAME,"ScoreGuide"))
+        ) 
+
+        link = self.browser.find_element(By.NAME, f"{materia.nome}{serie.nome}")
+        link.click()
+
+        print("ESPERANDO ABRIR A PAGINA DE ESTUDANTES ")
+        WebDriverWait(self.browser, 10).until(
+            expected_conditions.presence_of_element_located((By.NAME,"ScoreGuideStudents"))
+        )
+
+        print("PROCURANDO ENTRY PARA NOME")
+        username_input = self.browser.find_element(By.NAME, 'nome')
+        username_input.send_keys('alunoteste')
+        username_input.send_keys(Keys.RETURN)
+
+        time.sleep(2)
+
+        print("ESPERANDO ABRIR A PAGINA DE ESTUDANTES ")
+        WebDriverWait(self.browser, 10).until(
+            expected_conditions.presence_of_element_located((By.NAME,"ScoreGuideStudents"))
+        )        
+
+        username_input = self.browser.find_element(By.NAME, 'nome')
+        username_input.clear()
+        username_input.send_keys('alunoteste')
+        username_input.send_keys(Keys.RETURN)
+
+        time.sleep(2)
+
+        alunos = User.objects.filter(username__startswith='alunoteste')
+        self.assertEqual(alunos.count(), 2)
+        self.assertTrue(User.objects.filter(username='alunoteste').exists())
+        self.assertTrue(User.objects.filter(username='alunoteste1').exists())
+
+        time.sleep(5)
+
+    def test_CadastrarNota(self):
+        user = User.objects.create_user(username='teste', password='123456')
+
+        materia = Materia.criar('matematica', ['1'])
+
+        serie = Serie.criar('1º ano',materia)
+
+        professor = Teacher.criar(user, [materia], [serie])
+
+        aluno_user = User.objects.create_user(username='alunoteste', password='teste123')
+
+        aluno = Aluno.criar(aluno_user,serie,[materia])
+
+        self.loginAsTeacher()
+
+        button = self.browser.find_element(By.TAG_NAME,"button")
+        button.click()
+
+        link = self.browser.find_element(By.NAME, "score")
+        link.click()
+
+        WebDriverWait(self.browser, 10).until(
+            expected_conditions.presence_of_element_located((By.NAME,"ScoreGuide"))
+        ) 
+
+        link = self.browser.find_element(By.NAME, f"{materia.nome}{serie.nome}")
+        link.click()
+
+        print("ESPERANDO ABRIR A PAGINA DE ESTUDANTES ")
+        WebDriverWait(self.browser, 10).until(
+            expected_conditions.presence_of_element_located((By.NAME,"ScoreGuideStudents"))
+        )        
+
+        link = self.browser.find_element(By.NAME, f"{aluno.user}")
+        link.click()
+
+        nota_input = self.browser.find_element(By.NAME, 'nota')
+        data_input = self.browser.find_element(By.NAME, 'data')
+
+        nota_input.send_keys(10)
+        data_input.send_keys('2025-10-22')
+        nota_input.send_keys(Keys.RETURN)
+        
+        WebDriverWait(self.browser, 10).until(
+            expected_conditions.presence_of_element_located((By.NAME,"ScoreGuideStudents"))
+        )   
+
+        link = self.browser.find_element(By.NAME, f"{aluno.user}")
+        link.click()
+
+        media_input = self.browser.find_element(By.NAME, 'media')
+        media_input.send_keys(10)
+        media_input.send_keys(Keys.RETURN)
+
+        alunos = User.objects.filter(username='alunoteste')
+        self.assertEqual(alunos.media, 10)
+
+        time.sleep(5)
 
 # Create your tests here.
