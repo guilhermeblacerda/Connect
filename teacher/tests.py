@@ -6,6 +6,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.firefox.options import Options
+import geckodriver_autoinstaller
 from django.contrib.auth.models import User
 import time
 
@@ -13,13 +15,16 @@ from student.models import Serie,Materia,Aluno,Avaliacao,Media
 from student.tests import *
 from .models import *
 
-@override_settings(DEBUG=True, ALLOWED_HOSTS=['*'])
+geckodriver_autoinstaller.install()
+
 class LoginE2ETeste(LiveServerTestCase):
 
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        cls.browser = webdriver.Firefox()
+        options = Options()
+        options.headless = True 
+        cls.browser = webdriver.Firefox(options=options)
 
 
     @classmethod
@@ -116,19 +121,16 @@ class LoginE2ETeste(LiveServerTestCase):
         link = self.browser.find_element(By.NAME, f"{materia.nome}{serie.nome}")
         link.click()
 
-        print("ESPERANDO ABRIR A PAGINA DE ESTUDANTES ")
         WebDriverWait(self.browser, 10).until(
             expected_conditions.presence_of_element_located((By.NAME,"ScoreGuideStudents"))
         )
 
-        print("PROCURANDO ENTRY PARA NOME")
         username_input = self.browser.find_element(By.NAME, 'nome')
         username_input.send_keys('alunoteste')
         username_input.send_keys(Keys.RETURN)
 
         time.sleep(1)
 
-        print("ESPERANDO ABRIR A PAGINA DE ESTUDANTES ")
         WebDriverWait(self.browser, 10).until(
             expected_conditions.presence_of_element_located((By.NAME,"ScoreGuideStudents"))
         )        
@@ -168,7 +170,6 @@ class LoginE2ETeste(LiveServerTestCase):
         link = self.browser.find_element(By.NAME, f"{materia.nome}{serie.nome}")
         link.click()
 
-        print("ESPERANDO ABRIR A PAGINA DE ESTUDANTES ")
         WebDriverWait(self.browser, 10).until(
             expected_conditions.presence_of_element_located((By.NAME,"ScoreGuideStudents"))
         )        
@@ -183,12 +184,10 @@ class LoginE2ETeste(LiveServerTestCase):
         data_input.send_keys('2025-10-22')
         time.sleep(1)
         nota_input.send_keys(Keys.RETURN)
-        print("Enviou a avaliação")
-        
+       
         WebDriverWait(self.browser, 10).until(
             expected_conditions.presence_of_element_located((By.NAME,"ScoreGuideStudents"))
         )   
-        print("ABRIU A LISTA DE ALUNOS")
 
         link = self.browser.find_element(By.NAME, f"{aluno.user}")
         link.click()
@@ -228,7 +227,7 @@ class LoginE2ETeste(LiveServerTestCase):
         button = self.browser.find_element(By.TAG_NAME,"button")
         button.click()
 
-        time.sleep(3)
+        time.sleep(1)
 
         link = self.browser.find_element(By.NAME, "chat")
         link.click()
@@ -250,8 +249,6 @@ class LoginE2ETeste(LiveServerTestCase):
 
         admin = User.objects.create_superuser(username="stackadmin",password="123")
 
-        admin.id = 1
-
         user = User.objects.create_user(username='teste', password='123456')
 
         self.browser.get(f'{self.live_server_url}/')
@@ -272,7 +269,7 @@ class LoginE2ETeste(LiveServerTestCase):
         button = self.browser.find_element(By.TAG_NAME,"button")
         button.click()
 
-        time.sleep(3)
+        time.sleep(1)
 
         link = self.browser.find_element(By.NAME, "chat")
         link.click()

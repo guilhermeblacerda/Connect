@@ -39,7 +39,7 @@ class Materia(models.Model):
     
 class Serie(models.Model):
     nome = models.CharField(max_length=50)
-    materia = models.ManyToManyField(Materia)
+    materia = models.ManyToManyField(Materia,null=True)
 
     @classmethod
     def criar(cls,nome,materia):

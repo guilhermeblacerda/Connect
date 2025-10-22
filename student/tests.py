@@ -4,33 +4,31 @@ from django.test import LiveServerTestCase
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 from django.contrib.auth.models import User
+import geckodriver_autoinstaller
 import time
 from .models import *
 
 import time
 
+geckodriver_autoinstaller.install()
+
 class LoginE2ETeste(LiveServerTestCase):
 
-##    @classmethod
-##    def setUpClass(cls):
-##        super().setUpClass()
-##        cls.browser = webdriver.Firefox()
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        options = Options()
+        options.headless = True 
+        cls.browser = webdriver.Firefox(options=options)
 
-##    @classmethod
-##    def tearDownClass(cls):
-##        cls.browser.quit()
-##        super().tearDownClass()
+    @classmethod
+    def tearDownClass(cls):  
+        super().tearDownClass()
 
-    def setUp(self):
-        super().setUp()
-        self.browser = webdriver.Firefox()
-
-    def tearDown(self):
-        self.browser.quit()
-        super().tearDown()
 
     def login(self):
 
@@ -83,9 +81,9 @@ class LoginE2ETeste(LiveServerTestCase):
 
         user = self.login()
 
-        serie = Serie.criar("1º")
+        serie = Serie.criar("1º",None)
 
-        materia = Materia.criar("Teste",serie,'0')
+        materia = Materia.criar("Teste",["0"])
 
         aluno = Aluno.criar(user,serie,[materia])
 
@@ -97,15 +95,15 @@ class LoginE2ETeste(LiveServerTestCase):
         link = self.browser.find_element(By.NAME, "absence")
         link.click()
 
-        time.sleep(3)
+        time.sleep(1)
 
     def test_score(self):
 
         user = self.login()
 
-        serie = Serie.criar("1º")
+        serie = Serie.criar("1º",None)
 
-        materia = Materia.criar("Teste",serie,'0')
+        materia = Materia.criar("Teste",["0"])
 
         aluno = Aluno.criar(user,serie,[materia])
 
@@ -121,20 +119,20 @@ class LoginE2ETeste(LiveServerTestCase):
             expected_conditions.presence_of_element_located((By.NAME,"score"))
         )
 
-        time.sleep(2)
+        time.sleep(1)
 
         button = self.browser.find_element(By.NAME, "Teste")
         self.browser.execute_script("arguments[0].click();", button)
 
-        time.sleep(2)
+        time.sleep(1)
 
     def test_calendar(self):
 
         user = self.login()
 
-        serie = Serie.criar("1º")
+        serie = Serie.criar("1º",None)
 
-        materia = Materia.criar("Teste",serie,'0')
+        materia = Materia.criar("Teste",["0"])
 
         aluno = Aluno.criar(user,serie,[materia])
 
@@ -152,6 +150,5 @@ class LoginE2ETeste(LiveServerTestCase):
 
         self.browser.execute_script("window.scrollBy(0, 150);")
 
-        time.sleep(2)
 
 # Create your tests here.

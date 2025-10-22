@@ -130,7 +130,6 @@ def chat_page(request,usuario_id=None):
         documentos = request.POST.get("documentos")
         dispensa = request.POST.get("dispensa")
         texto = request.POST.get('mensagem')
-        print(texto)
 
         if destinatario:
             if documentos:

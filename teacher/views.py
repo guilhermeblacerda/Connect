@@ -13,7 +13,6 @@ def gerar_username_unico(nome):
     while User.objects.filter(username=username).exists():
         username = f"{base}{i}"
         i += 1
-    print(f"Gerando username único: {username}")  
     return username
 
 def GoToLogin(request):
