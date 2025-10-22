@@ -118,7 +118,7 @@ def GoToScore(request,serieId=None,materiaId=None,alunoId=None):
     if not professor:
         return redirect('teacherLogin')
 
-    alunos = []
+    aluno = []
     series = []
     materias_series = []
     selectedGrade = False
@@ -135,7 +135,7 @@ def GoToScore(request,serieId=None,materiaId=None,alunoId=None):
         selectedGrade = True
         serie = Serie.objects.get(id=serieId)
         materia = Materia.objects.get(id=materiaId)
-        alunos = Aluno.objects.filter( 
+        aluno = Aluno.objects.filter( 
             serie=serie,
             materias=materia
         )
@@ -195,7 +195,7 @@ def GoToScore(request,serieId=None,materiaId=None,alunoId=None):
 
     return render(request,"teacher/score.html",{
         'materias_series':materias_series,
-        'alunos':alunos,
+        'alunos':aluno,
         'selectedGrade':selectedGrade,
         'selectedStudent':selectedStudent,
         })
