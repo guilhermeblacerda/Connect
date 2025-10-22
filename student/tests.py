@@ -7,6 +7,8 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.service import Service
 from django.contrib.auth.models import User
 import time
 from .models import *
@@ -15,12 +17,24 @@ import time
 
 class LoginE2ETeste(LiveServerTestCase):
 
+    def criar_driver():
+        """Criar novo WebDriver"""
+        options = Options()
+        options.add_argument('--headless')
+        options.add_argument('--no-sandbox')
+        options.add_argument('--disable-dev-shm-usage')
+        
+        service = Service(ChromeDriverManager().install())
+        driver = webdriver.Chrome(service=service, options=options)
+        driver.implicitly_wait(10)
+        return driver
+
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
         options = Options()
         options.headless = True
-        cls.browser = webdriver.Chrome(options=options)
+        cls.browser = cls.criar_driver()
 
     @classmethod
     def tearDownClass(cls):  
