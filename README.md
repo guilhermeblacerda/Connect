@@ -51,5 +51,7 @@ Link do deploy - professor: https://connect-ctf8.onrender.com/teacher/
 
 Screencast da história do professor: https://youtu.be/gDlEB7e2OkA
 
+Screencast dos testes: https://youtu.be/FVlgAsxKg04
 
+Screencast do build: https://youtu.be/yp-bbEI6lyg
 
