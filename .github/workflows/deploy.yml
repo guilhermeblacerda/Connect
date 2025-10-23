@@ -3,7 +3,7 @@ name: Django CI with Selenium
 on:
   push:
     branches:
-      - dev
+      - main
 
 jobs:
   test:
