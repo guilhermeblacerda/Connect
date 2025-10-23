@@ -7,7 +7,225 @@ body {
 
   user-select: none;
 
-  transform: translate(1200px,0px);
+  left: 20%;
+
+  height: 28px;
+  
+  color: black;
+
+  bottom: 8vh;
+
+  text-align: center;
+
+}
+
+#Sair::after {
+  content: "";
+
+  position: absolute;
+
+  height: 2px;
+
+  width: 0;
+
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  background-color: black;
+
+  transition: 0.3s;
+  
+  bottom: 0;
+}
+
+#Sair:hover::after {
+
+  width: 50%;
+}
+
+#logo {
+  position: fixed;
+
+  height: 100px;
+  width: 100px;
+
+  left: 2vw;
+}
+
+#topBar {
+  position: relative;
+  width: 100vw;
+  height: 100px;
+  background-color: #D57646;
+  top: -3vh;
+}
+
+#absenceGuide {
+  position: relative;
+  
+  font-family: 'poppins',sans-serif;
+  
+  text-align: center;
+
+  user-select: none;
+
+  width: 50%;
+  left: 50%;
+  top: 10%;
+  transform: translate(-50%,50%);
+
+}
+
+#alunos{
+  font-family: 'poppins',sans-serif;
+  width: 100vw;
+}
+
+#alunos td{
+  text-align: center;
+}
+
+#alunos input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    accent-color: #4CAF50; 
+    cursor: pointer;
+}
+
+#submitButton{
+  position: relative;
+
+  bottom: -30%;
+  left: 50%;
+  height: 50px;
+  width: 100px;
+
+  background-color: #ed834e;
+  font-family: 'poppins',sans-serif;
+  border: none;
+
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.7);
+
+  border-radius: 10px;
+
+  transform: translate(-50%,50%);
+
+}
+
+#submitButton:active {
+  box-shadow: inset 0px 5px 10px rgba(0, 0, 0, 0.7);
+}
+
+#listaMaterias ul{
+
+  list-style: none;
+  padding-left: 0;
+  text-align: center;
+  
+}
+
+#listaMaterias li{
+  height: 28px;
+  position: relative;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  border-radius: 50px;
+}
+
+#listaMaterias li:hover{
+
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.7);
+}
+
+#listaMaterias li a{
+  
+  width: 100%;
+  transform: translateX(-50%);
+
+}
+
+#return {
+  position: absolute;
+  font-size: 30px;
+  width: 50px;
+  height: 50px;
+  top: 1vh;
+  left: 1vw;
+  color: black;
+
+  transition:0.3s;
+}
+
+#return:hover {
+
+  color: beige;
+
+}
+
+#avaliacaoForm{
+
+  height: 300px;  
+
+}
+
+#avaliacaoForm thead{
+
+  width: 100%;
+
+}
+
+#avaliacaoForm tr{
+
+  width: 100vw;
+  display: inline-block;
+  
+}
+
+#avaliacaoForm th{
+
+  padding-left: 50px;
+  font-family: 'poppins',sans-serif;
+
+}
+
+#avaliacaoForm td{
+  font-family: 'poppins',sans-serif;
+
+  padding-left: 50px;
+}
+
+#avaliacaoForm input[type="number"],input[type="date"] {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    padding: 10px 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    transition: all 0.3s ease;
+    width: 200px;
+}
+
+input[type="number"]:focus,
+input[type="date"]:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 4px #4CAF50;
+}
+
+#nota {
+  position: relative;
+
+  padding-right: 50px;
+  padding-left: 50px;
+  left: 15%;
+  
+}
+
+#data{
+
+  left: 35%;
+  position: relative;
+
 }
 
 .principal_title {
@@ -36,7 +254,7 @@ body {
     position: fixed;
     left: 50%;
 
-    top: 60%;
+    top: 55%;
 
     transform: translate(-50%,-50%);
 }
@@ -55,22 +273,19 @@ body {
 
   list-style: none;
 
-  font-family: "Poppins", sans-serif;
-
-  text-shadow: -5px -5px 10px rgba(0, 0, 0, 0.2);
-
   justify-content: space-between;
 }
 
 .links {
   position: absolute;
 
-  color: #595643;
+  color: black;
 
   font-family: "Poppins", sans-serif;
 
   text-shadow: none;
   text-decoration: none;
+  text-align: center;
 
   user-select: none;
 
@@ -96,20 +311,20 @@ body {
 }
 
 .sideBar.fechar{
-    left: -180px;
+    right: -182px;
 }
 
 .sideBar {
     position: fixed;
 
     top: 0;
-    left: -20px;
+    right: -20px;
 
     width: 200px;
     height: 100vh;
 
     color: white;
-    background: #2c3e50;
+    background: #D57646;    
 
     padding: 20px;
 
@@ -118,7 +333,7 @@ body {
 
 .sideBar button{
     position: absolute;
-    right: 6%;
+    left: 6%;
     top: 1%;
 
     width: 30px;
@@ -138,6 +353,26 @@ body {
 }
 
 .sideBar ul{
-    position: relative;
+  list-style: none;
+  padding-left: 0;
+}
+
+.sideBar li{
+  position: relative;
+  height: 28px;
+  width: 150px;
+  left: 2%;
+  padding: 20px;
+}
+
+.sideBar li a{
+
+  transition: 0.3s;
+
+}
+
+.sideBar li a:hover{
+
+  color: bisque;
 
 }

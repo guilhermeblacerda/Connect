@@ -5,6 +5,7 @@
 
 <head>
 
+    <link rel="icon" href="{% static 'images/LogoDoCesar.svg' %}" type="image/svg+xml">
     <link rel="stylesheet" href='{% static "css/style.css" %}'>
     <link rel = "stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
 
@@ -14,6 +15,10 @@
 
 </head>
 <body>
+
+    <a href="/home">
+        <img id="logo" src ='{% static "images/LogoDoCesar.svg" %}'></img>
+    </a>
 
     <ul class="horizontal_list">
         <li><a id = "register" href="{% url 'login' %}">Login</a></li>

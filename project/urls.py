@@ -38,9 +38,23 @@ urlpatterns = [
 
     path('logout/', studentViews.logout_page, name="logout"),
 
-    path('teacherlogin', teacherViews.GoToLogin, name ="teacherLogin"),
+    path('teacher/login/', teacherViews.GoToLogin, name ="teacherLogin"),
 
-    path('teacherHome', teacherViews.GoToHome, name = "teacherHome"),
+    path('teacher/', teacherViews.GoToHome, name = "teacherHome"),
+
+    path('teacher/absence/',teacherViews.GoToAbsence, name ="teacherAbsence"),
+
+    path('teacher/absence/<int:serieId>/<int:materiaId>/',teacherViews.GoToAbsence, name ="teacherAbsenceDetail"),
+
+    path('teacher/score/', teacherViews.GoToScore, name = "teacherScore"),
+
+    path('teacher/score/<int:serieId>/<int:materiaId>/',teacherViews.GoToScore,name = "teacherScoreDetail"),
+
+    path('teacher/score/<int:serieId>/<int:materiaId>/<int:alunoId>/',teacherViews.GoToScore,name = "teacherScoreAluno"),
+
+    path('chat/', studentViews.chat_page , name = "chat"),
+
+    path('chat/<int:usuario_id>/', studentViews.chat_page, name='chat'), 
 
     path('forgot_passwd/',auth_views.PasswordResetView.as_view(
         template_name = 'student/forgot.html'), name='password_reset'),

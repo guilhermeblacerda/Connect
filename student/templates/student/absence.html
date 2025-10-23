@@ -9,18 +9,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Faltas de {{ request.user.username }}</title>
 
+    <link rel="icon" href="{% static 'images/LogoDoCesar.svg' %}" type="image/svg+xml">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel = "stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
 
 </head>
 <body>
-
-    <div class="top_bar">
-        <ul class="horizontal_list">
-            <li id="return"><a class = 'links' href="{% url 'home' %}">Voltar</a></li>
-        </ul>
-
-    </div>
+         
+    <a id="return" class = 'links' href="{% url 'home' %}">&larr;</a>
 
     <div class="user_data">
 

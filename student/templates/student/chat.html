@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    {% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+
+    <link rel="icon" href="{% static 'images/LogoDoCesar.svg' %}" type="image/svg+xml">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel = "stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
+</head>
+
+<body id = chatBody>
+
+    <div  class = "principal_title">
+        <h1>CONNECT</h1>
+        <h2>chat</h2>
+    </div>
+
+    {% if not request.user.is_staff %}
+
+    <a id="chatReturn" href="{% url 'home' %}">&larr;</a>
+
+    {% endif %}
+
+    {% if usuarios %}
+    <div id = "contatos">
+        <a id="chatReturn" href="{% url 'home' %}">&larr;</a>
+        <h3>Usuarios</h3>
+        <ul>
+            {% for u in usuarios %}
+            <li><a href="{% url 'chat' u.id %}">
+                {{ u.username }}
+                {% if u.toRead > 0 %}
+                    {{ u.toRead }}
+                {% endif %}
+            </a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+    {% if destinatario %}
+    <div id = "chatArea">
+        {% if destinatario.username == "stackadmin" %}
+            <h3>Conversa com Diretoria</h3>
+        {% else %}
+            <h3>Conversa com {{ destinatario.username }}</h3>
+        {% endif %}
+        <div id="chat-box" style="border:2px solid #ccc; padding:10px; height:300px; overflow-y:scroll;">
+            {% for m in mensagens %}
+                <p><strong>{{ m.remetente.username }}:</strong>{{ m.texto }}</p>
+            {% endfor %}
+        </div>
+
+    
+    <form method="post" id="form-texto">
+        {% csrf_token %}
+        <input type="text" name="mensagem" placeholder="Digite aqui" autocomplete="off">
+        <button type="submit">Enviar</button>
+    </form>
+
+   
+    <form method="post" id="form-solicitacoes">
+        {% csrf_token %}
+        <button type="submit" name="documentos" value="Solicito Documentação">Solicito Documentos</button>
+        <button type="submit" name="dispensa" value="Solicito Dispensa">Solicitar Dispensa</button>
+    </form>
+</div>
+    </div>
+    {% endif %}
+
+        
+
+</body>
+</html>

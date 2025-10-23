@@ -38,7 +38,41 @@ table {
 
   user-select: none;
 
-  transform: translate(1200px,0px);
+  left: 20%;
+
+  height: 28px;
+  
+  color: black;
+
+  bottom: 8vh;
+
+  text-align: center;
+
+}
+
+#Sair::after {
+  content: "";
+
+  position: absolute;
+
+  height: 2px;
+
+  width: 0;
+
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  background-color: black;
+
+  transition: 0.3s;
+  
+  bottom: 0;
+}
+
+#Sair:hover::after {
+
+  width: 50%;
 }
 
 #register {
@@ -78,18 +112,22 @@ table {
 }
 
 #register_username {
+  position: fixed;
   left: 50%;
-  bottom: 21%;
+  bottom: 25vh;
 }
 
 #register_email {
+  position: fixed;
   left: 50%;
-  bottom: 90px;
+  bottom: 14vh;
+  
 }
 
 #register_password {
+  position: fixed;
   left: 50%;
-  bottom: 10px;
+  bottom: 4vh;
 }
 
 #login_error {
@@ -109,12 +147,18 @@ table {
 }
 
 #return {
-  position: absolute;
+  position: fixed;
 
-  left: 5%;
-  top: -10px;
+  left: 0;
+  top: 1vh;
 
-  transform: translate(-50%, -50%);
+  font-size: 30px;
+
+  transition: 0.3s;
+}
+
+#return:hover {
+  color: black;
 }
 
 #calendar {
@@ -132,6 +176,144 @@ table {
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.7);
 
   font-family: 'Poppins',sans-serif;
+
+}
+
+#logo {
+  position: fixed;
+
+  height: 100px;
+  width: 100px;
+
+  left: 2vw;
+}
+
+#chatBody{
+
+  display: flex;
+
+}
+
+#contatos{
+  position: relative;
+  height: 102vh;
+  width: 15vw;
+
+  text-shadow: none;
+  text-decoration: none;
+  text-align: center;
+
+
+  user-select: none;
+
+  background-color: #ed834e;
+
+  font-family: 'poppins',sans-serif;
+
+  top: -2vh;
+  left: -2vw;
+
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.7);
+  border-radius: 15px;
+
+}
+
+#contatos h3{
+
+  position: relative;
+
+  width: 50%;  
+  left: 32%;
+
+  display: flex;
+
+  margin: 20px;
+
+  text-align: left;
+  text-decoration: none;
+  font-weight: normal;
+
+}
+
+#contatos ul{
+
+  list-style: none;
+
+  padding-left: 0;
+
+}
+
+#contatos li {
+  position: relative;
+  user-select: none;
+
+  height: 28px;
+
+  color: black;
+
+  padding: 20px;
+
+}
+
+#contatos li::after {
+  content: "";
+
+  position: absolute;
+
+  height: 2px;
+
+  width: 0;
+
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  background-color: black;
+
+  transition: 0.3s;
+  
+  bottom: 0;
+}
+
+#contatos li:hover::after {
+
+  width: 50%;
+}
+
+#chatReturn {
+  position: fixed;
+
+  color: #4e6b66;
+
+  left: 20px;
+  top: 0.25vh;
+
+  font-size: 30px;
+  text-decoration: none;
+
+  transition: 0.3s;
+
+
+}
+
+#chatReturn:hover {
+  color: black;
+}
+
+#contatos a{
+
+  text-decoration: none;
+
+  color: black;
+
+}
+
+#chatArea{
+
+  position: fixed;
+  left: 17vw;
+  top: 10vw;
+  width: 75vw;
 
 }
 
@@ -155,6 +337,15 @@ table {
   font-family: "Poppins", sans-serif;
 
   text-shadow: 0px -5px 10px rgba(0, 0, 0, 0.15);
+}
+
+.principal_title h2 {
+    position: fixed;
+    left: 50%;
+
+    top: 55%;
+
+    transform: translate(-50%,-50%);
 }
 
 .horizontal_list {
@@ -252,12 +443,13 @@ table {
 .links {
   position: absolute;
 
-  color: #595643;
+  color: black;
 
   font-family: "Poppins", sans-serif;
 
   text-shadow: none;
   text-decoration: none;
+  text-align: center;
 
   user-select: none;
 
@@ -381,4 +573,71 @@ table {
   background-color: #ed834e;
   border-radius: 8px;
   height: 54px;
+}
+
+.sideBar.fechar{
+    right: -182px;
+}
+
+.sideBar {
+    position: fixed;
+
+    top: 0;
+    right: -30px;
+
+    width: 200px;
+    height: 100vh;
+
+    color: white;
+    background: #D57646;    
+
+    padding: 20px;
+
+    transition: 0.3s;
+}
+
+.sideBar button{
+    position: absolute;
+    left: 6%;
+    top: 1%;
+
+    width: 30px;
+    height: 30px;
+
+    font-size: 30px;
+
+    color: white;
+
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sideBar ul{
+  list-style: none;
+  padding-left: 0;
+}
+
+.sideBar li{
+  position: relative;
+  height: 28px;
+  width: 150px;
+  left: 2%;
+  padding: 20px;
+}
+
+.sideBar li a{
+
+  transition: 0.3s;
+
+}
+
+.sideBar li a:hover{
+
+  color: bisque;
+
 }
