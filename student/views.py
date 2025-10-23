@@ -100,6 +100,8 @@ def calendar_page(request):
     return render(request,'student/calendar.html')
 
 def chat_page(request,usuario_id=None):
+    if not request.user.is_authenticated:
+        return redirect('login')
     user = request.user
     mensagens = []
     destinatario = None
