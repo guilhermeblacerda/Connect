@@ -33,8 +33,6 @@ ALLOWED_HOSTS = [
 CSRF_TRUSTED_ORIGINS = [
     "https://connect-e4d5eqazh2bdhafq.brazilsouth-01.azurewebsites.net",
 ]
-
-
 # Application definition
 
 INSTALLED_APPS = [
