@@ -45,6 +45,6 @@ Relatório de programação em par incrementado: https://docs.google.com/documen
 
 Link do deploy - versão aluno: https://connect-ctf8.onrender.com
 
-Screencast da história do contato com a secretaria: https://youtu.be/bImwlUEmFeg
+Screencast da história do contato com a secretaria: [https://youtu.be/bImwlUEmFeg](https://youtu.be/RnCBL-RuNfM)
 
 
