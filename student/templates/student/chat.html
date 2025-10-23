@@ -52,7 +52,7 @@
         {% endif %}
         <div id="chat-box" style="border:2px solid #ccc; padding:10px; height:300px; overflow-y:scroll;">
             {% for m in mensagens %}
-                <p><strong>{{ m.remetente.username }}:</strong> {{ m.texto }}</p>
+                <p><strong>{{ m.remetente.username }}:</strong>{{ m.texto }}</p>
             {% endfor %}
         </div>
 
