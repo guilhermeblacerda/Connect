@@ -43,4 +43,8 @@ Print do bug tracker atualizado: <img width="1530" height="632" alt="Captura de 
 
 Relatório de programação em par incrementado: https://docs.google.com/document/d/1IShEEUbqWfifDA5PFipxCwP6wHIWXmyDP816K3ICCTc/edit?usp=sharing
 
+Link do deploy - versão aluno: https://connect-ctf8.onrender.com
+
+Screencast da história do contato com a secretaria: https://youtu.be/bImwlUEmFeg
+
 
