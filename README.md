@@ -7,6 +7,9 @@ O sistema é uma plataforma web completa desenvolvida para facilitar a gestão a
 
 Nele, é possível visualizar informações como notas, faltas e calendário acadêmico do aluno.
 
+
+Também há a parte do professor, que pode cadastrar notas e faltas dos alunos.
+
 Entrega 01 - 12/09:
 
 Link com as histórias : https://docs.google.com/document/d/1frMuuaYQTQvNuL9MLbKGFURiKJR1S-i5moneihX00oo/edit?usp=sharing
