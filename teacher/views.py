@@ -6,70 +6,64 @@ from django.utils import timezone
 from django.utils.text import slugify
 from .models import Teacher
 
-##função que gera um nome unico para cada usuario, 
-##
-def GenerateUniqueUsername(nome):
-    base = slugify(nome)
-    username = base
+'''
+    Função que gera um nome unico para cada usuario,
+    recebendo o nome base, ele altera o nome do usuario de acordo
+    com o numero de usuarios com aquele determinado node
+'''
+def GenerateUniqueUsername(nomeBase):
+    nomeBase = slugify(nomeBase)
+    nomeDoUsuario = nomeBase
     i = 1
-    while User.objects.filter(username=username).exists():
-        username = f"{base}{i}"
+
+    while User.objects.filter(username=nomeDoUsuario).exists():
+        nomeDoUsuario = f"{nomeBase}{i}"
         i += 1
-    return username
 
+    return nomeDoUsuario
+
+'''
+    Função que manda o usuario para o login 
+'''
 def GoToLogin(request):
-    context = {}
-
-    if request.method == 'POST':
-        name = request.POST.get('username')
-        password = request.POST.get('password')
-
-        user = authenticate(request,username=name,password=password)
-
-        if user is not None and hasattr(user,'teacher'):
-            login(request, user)
-
-            return redirect('teacherHome')
-        else:
-            context['error'] = "Professor não encontrado" 
-
-    return render(request, "teacher/login.html",context)
     
+    context = {} #Dicionario que passado para o frontend 
+
+    if request.method == 'POST': #checa se o tipo de requerimento é de envio
+        nomeDoUsuario = request.POST.get('username')
+        senhaDoUsuario = request.POST.get('password')
+
+        user = authenticate(request,username=nomeDoUsuario,password=senhaDoUsuario) ##função que pega o usuario associado ao login e senha do usuario
+
+        if user is not None and hasattr(user,'teacher'): ##parte que checa se o usuario foi encontrado
+            login(request, user) ##loga o usuario
+
+            return redirect('teacherHome') ##redireciona para o home
+        else:
+            context['error'] = "Professor não encontrado" ##define o valor de error dentro do dicionario context
+
+    return render(request, "teacher/login.html",context) ##renderiza a pagina
+    
+'''
+    Manda o usuario para o home
+'''
 def GoToHome(request):
     return render(request, "teacher/home.html")
 
-def GoToClass(request):
-
-    user = request.user
-
-    if user is None:
-        return redirect("teacherLogin")
-
-    professor = Teacher.objects.get(nome=user)
-
-    if request.method == 'POST':
-        nome = request.POST.get('nome')
-
-        serie = Serie.criar(nome)
-
-    professor.serie.add(serie)
-
-    turmas = professor.serie.all()
-
-    return render(request, "teacher/class.html")
-
+'''
+    Função que manda o usuario para a pagina de faltas
+'''
 def GoToAbsence(request,serieId = None,materiaId = None):
-    if not request.user.is_authenticated:
-        return redirect('teacherLogin')
+    if not request.user.is_authenticated: ##checa se o usuario esta logado
+        return redirect('teacherLogin') ##Se não estiver logado redireciona para o login
     
-    user = request.user
-    professor = Teacher.objects.filter(nome = user).first()
+    usuario = request.user
+    professor = Teacher.objects.filter(nome = usuario).first() ##pega um professor de acordo com o usuario logado
 
-    if not professor:
+    if not professor: ##checa se existe um professor
         return redirect('teacherLogin')
     
-    alunos = []
-    series = []
+    context = {}
     materias_series = []
     selected = False
 
@@ -77,11 +71,14 @@ def GoToAbsence(request,serieId = None,materiaId = None):
 
     for serie in series:
         materias = serie.materia.filter(id__in=professor.materia.values_list('id', flat=True))
+
         for materia in materias:
             materias_series.append((materia, serie))
+            context['materias_series'] = materias_series 
 
     if serieId and materiaId:
         selected = True
+
         serie = Serie.objects.get(id=serieId)
         materia = Materia.objects.get(id=materiaId)
         alunos = Aluno.objects.filter(
@@ -108,20 +105,26 @@ def GoToAbsence(request,serieId = None,materiaId = None):
 
         return redirect('teacherAbsence')
 
-    return render(request,"teacher/absence.html",{'materias_series':materias_series,'alunos':alunos,'selected':selected})
+    context['alunos'] = alunos
+    context['selected'] = selected
 
+    return render(request,"teacher/absence.html",context)
+
+'''
+    Função para ir para a pagina de notas
+'''
 def GoToScore(request,serieId=None,materiaId=None,alunoId=None):
-    if not request.user.is_authenticated:
+    if not request.user.is_authenticated: ##Checa se o usuario esta autenticado
         return redirect('teacherLogin')
 
-    user = request.user
-    professor = Teacher.objects.filter(nome = user).first()
+    usuario = request.user
+    professor = Teacher.objects.filter(nome = usuario).first()
 
     if not professor:
         return redirect('teacherLogin')
 
+    context = {}
     aluno = []
-    series = []
     materias_series = []
     selectedGrade = False
     selectedStudent = False
@@ -130,11 +133,14 @@ def GoToScore(request,serieId=None,materiaId=None,alunoId=None):
 
     for serie in series:
         materias = serie.materia.filter(id__in=professor.materia.values_list('id', flat=True))
+
         for materia in materias:
             materias_series.append((materia, serie))
+            context['materias_series'] = materias_series
 
     if serieId and materiaId:
         selectedGrade = True
+
         serie = Serie.objects.get(id=serieId)
         materia = Materia.objects.get(id=materiaId)
         aluno = Aluno.objects.filter( 
@@ -144,6 +150,7 @@ def GoToScore(request,serieId=None,materiaId=None,alunoId=None):
         
         if alunoId:
             selectedStudent = True
+            
             aluno = Aluno.objects.get(id=alunoId)
             materias_series = [(Materia.objects.get(id=materiaId),Serie.objects.get(id=serieId))]
 
@@ -194,12 +201,10 @@ def GoToScore(request,serieId=None,materiaId=None,alunoId=None):
                 
                 return redirect('teacherScoreDetail', serieId=serie.id, materiaId=materia.id)
 
+    context['alunos'] = aluno
+    context['selectedGrade'] = selectedGrade
+    context['selectedStudent'] = selectedStudent
 
-    return render(request,"teacher/score.html",{
-        'materias_series':materias_series,
-        'alunos':aluno,
-        'selectedGrade':selectedGrade,
-        'selectedStudent':selectedStudent,
-        })
+    return render(request,"teacher/score.html",context)
 
 # Create your views here.
