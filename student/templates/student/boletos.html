@@ -1,30 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    {% load static %}
+{% load static %}
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Faltas de {{ request.user.username }}</title>
+    <title>Boletos</title>
 
     <link rel="icon" href="{% static 'images/LogoDoCesar.svg' %}" type="image/svg+xml">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel = "stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
-
 </head>
 <body>
-         
+      
     <a id="return" class = 'links' href="{% url 'home' %}">&larr;</a>
 
     <div class="user_data">
 
         <img src="https://placehold.co/128x128" alt="Foto do usuario">
 
-        <h1>Faltas</h1>
-
-        <h2>Total: {{ total }}</h2>
+        <h1>Boletos</h1>
 
         <p>{{ request.user.username }}</p>
         
@@ -34,19 +30,17 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Data</th>
-                        <th>Materia</th>
-                        <th>Justificada?</th>
-                        <th>Comentario</th>
+                        <th>Data de vencimento</th>
+                        <th>valor</th>
+                        <th>pago?</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {% for falta in faltas %}
-                    <tr>
-                        <th>{{ falta.data }}</th>
-                        <th>{{ falta.materia.nome }}</th>
-                        <th>{% if falta.justificada %}sim{% else %}Não{% endif %}</th>
-                        <th>{{ falta.comentario }}</th>
+                    {% for boleto in boletos %}
+                    <tr class="clickable_line" data-href="{{ boleto.link }}"> 
+                        <th>{{ boleto.dataDeVencimento }}</th>
+                        <th>{{ boleto.valor }}</th>
+                        <th>{% if boleto.pago %}sim{% else %}Não{% endif %}</th>
                     </tr>
                     {% endfor %}
                 </tbody>
@@ -54,6 +48,7 @@
 
     </div>
 
+    <script src="{% static 'js/boleto.js' %}"></script>
+    
 </body>
 </html>
-

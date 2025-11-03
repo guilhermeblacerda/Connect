@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from datetime import date
 from multiselectfield import MultiSelectField
 
 class Materia(models.Model):
@@ -139,4 +140,22 @@ class Mensagem(models.Model):
     def __str__(self):
         return f"{self.remetente} -> {self.destinatario}: {self.texto[:20]}"
     
+class Boleto(models.Model):
+    usuario = models.ForeignKey(User, related_name="boletos",on_delete=models.CASCADE)
+    dataDeVencimento = models.DateTimeField()
+    valor = models.FloatField()
+    link = models.URLField(blank=True,null=True)
+    pago = models.BooleanField(default=False, verbose_name='Pago')
+    dataDePagamento = models.DateField(blank=True,null=True,verbose_name="Data De Pagamento")
+
+    criadoEm = models.DateTimeField(auto_now_add=True)
+    atualizadoEm = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"Boleto{self.id} - {self.usuario.username} - R$ {self.valor:.2f}"
+    
+    @property
+    def EstaVencida(self):
+        return (not self.pago) and (self.dataDeVencimento < date.today())
+
 # Create your models here.

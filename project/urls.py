@@ -56,6 +56,10 @@ urlpatterns = [
 
     path('chat/<int:usuario_id>/', studentViews.chat_page, name='chat'), 
 
+    path('boleto/', studentViews.GoToBoletos, name = 'boleto'),
+
+    path('boleto/<int:boletoId>/', studentViews.GoToBoletos , name = 'boleto'),
+
     path('forgot_passwd/',auth_views.PasswordResetView.as_view(
         template_name = 'student/forgot.html'), name='password_reset'),
 
