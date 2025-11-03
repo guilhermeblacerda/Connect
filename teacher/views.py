@@ -65,6 +65,7 @@ def GoToAbsence(request,serieId = None,materiaId = None):
     
     context = {}
     materias_series = []
+    alunos = []
     selected = False
 
     series = professor.serie.all()
