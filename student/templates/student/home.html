@@ -21,14 +21,14 @@
     </a>
 
     <div  class = "principal_title">
-        <h1>CONNECT</h1>
+        <h1 name="connect">CONNECT</h1>
         <h2>aluno</h2>
     </div>
 
     <div id="sideBar" class="sideBar fechar">
         <button onclick="toogleSideBar()">☰</button>
 
-        <a  id="Sair" class="links" href="{% url 'logout' %}">Sair Da Conta</a>
+        <a id="Sair" class="links" href="{% url 'logout' %}">Sair Da Conta</a>
 
         <ul>
             <li><a name = "absence" class="links" href="{% url 'absence' %}">Faltas</a></li>

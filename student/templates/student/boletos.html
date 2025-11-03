@@ -16,7 +16,7 @@
       
     <a id="return" class = 'links' href="{% url 'home' %}">&larr;</a>
 
-    <div class="user_data">
+    <div name="boletosInfo" class="user_data">
 
         <img src="https://placehold.co/128x128" alt="Foto do usuario">
 
@@ -33,14 +33,16 @@
                         <th>Data de vencimento</th>
                         <th>valor</th>
                         <th>pago?</th>
+                        <th>Data do pagamento</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for boleto in boletos %}
-                    <tr class="clickable_line" data-href="{{ boleto.link }}"> 
+                    <tr name="{{ boleto.id }}" class="clickable_line" data-href="{{ boleto.link }}"> 
                         <th>{{ boleto.dataDeVencimento }}</th>
                         <th>{{ boleto.valor }}</th>
                         <th>{% if boleto.pago %}sim{% else %}Não{% endif %}</th>
+                        <th>{% if boleto.pago %}{{ boleto.dataDePagamento }}{% else %}-{% endif %}</th>
                     </tr>
                     {% endfor %}
                 </tbody>

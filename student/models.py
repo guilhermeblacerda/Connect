@@ -40,7 +40,7 @@ class Materia(models.Model):
     
 class Serie(models.Model):
     nome = models.CharField(max_length=50)
-    materia = models.ManyToManyField(Materia,null=True)
+    materia = models.ManyToManyField(Materia)
 
     @classmethod
     def criar(cls,nome,materia):
@@ -144,7 +144,7 @@ class Boleto(models.Model):
     usuario = models.ForeignKey(User, related_name="boletos",on_delete=models.CASCADE)
     dataDeVencimento = models.DateTimeField()
     valor = models.FloatField()
-    link = models.URLField(blank=True,null=True)
+    link = models.URLField(blank=True,null=True,default="#")
     pago = models.BooleanField(default=False, verbose_name='Pago')
     dataDePagamento = models.DateField(blank=True,null=True,verbose_name="Data De Pagamento")
 
