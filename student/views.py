@@ -146,4 +146,17 @@ def chat_page(request,usuario_id=None):
         
     return render(request,'student/chat.html', {'mensagens': mensagens,'destinatario':destinatario, 'usuarios':usuarios})
 
+def GoToBoletos(request,boletoId=None):
+    if not request.user.is_authenticated:
+        return redirect('login')
+    
+    usuario = request.user
+    BoletosDoUsuario = usuario.boletos.all()
+    context = {'usuario': usuario,'boletos':BoletosDoUsuario}
+
+    if boletoId:
+        boleto = usuario.boletos.filter(id=boletoId).first()
+
+    return render(request,'student/boletos.html',context)
+
 # Create your views here.

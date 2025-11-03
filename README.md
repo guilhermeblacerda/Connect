@@ -5,26 +5,34 @@ O connect consiste em uma pagina de web de gestão escolar.
 
 O sistema é uma plataforma web completa desenvolvida para facilitar a gestão acadêmica de instituições de ensino.
 
+<<<<<<< HEAD
 Nele, é possível visualizar informações como notas, faltas e calendário acadêmico do aluno.
 
 
 Também há a parte do professor, que pode cadastrar notas e faltas dos alunos.
 
 Entrega 01 - 12/09:
+=======
+<details>
+>>>>>>> dev
 
-Link com as histórias : https://docs.google.com/document/d/1frMuuaYQTQvNuL9MLbKGFURiKJR1S-i5moneihX00oo/edit?usp=sharing
+<summary>Entrega 01 - 12/09:</summary>
 
-<img width="1547" height="595" alt="Captura de tela 2025-09-12 153438" src="https://github.com/user-attachments/assets/1f2a3a79-0723-4770-b6e0-e60efe5cabe5" />
-<img width="1724" height="524" alt="Captura de tela 2025-09-13 104636" src="https://github.com/user-attachments/assets/c0cc142b-1433-4a99-bb4f-70ad65a371c0" />
+  Link com as histórias : https://docs.google.com/document/d/1frMuuaYQTQvNuL9MLbKGFURiKJR1S-i5moneihX00oo/edit?usp=sharing
+
+  <img width="1547" height="595" alt="Captura de tela 2025-09-12 153438" src="https://github.com/user-attachments/assets/1f2a3a79-0723-4770-b6e0-e60efe5cabe5" />
+  <img width="1724" height="524" alt="Captura de tela 2025-09-13 104636" src="https://github.com/user-attachments/assets/c0cc142b-1433-4a99-bb4f-70ad65a371c0" />
 
 
+  Link do figma: https://www.figma.com/design/LKl432PuzAcMlRcioxsRUU/Fds---grupo-2?node-id=0-1&t=tinb13KwDCEmZ7GF-1
 
-Link do figma: https://www.figma.com/design/LKl432PuzAcMlRcioxsRUU/Fds---grupo-2?node-id=0-1&t=tinb13KwDCEmZ7GF-1
+  Link do screencast do figma : https://youtu.be/0vRORnZYjXQ
 
-Link do screencast do figma : https://youtu.be/0vRORnZYjXQ
+</details>
 
-Entrega 02 - 29/09:
+<details>
 
+<<<<<<< HEAD
 Print do Jira : <img width="1515" height="598" alt="Captura de tela 2025-09-29 085750" src="https://github.com/user-attachments/assets/79d18372-1d0c-4444-86bd-d9ac58af3d64" />
 <img width="1687" height="474" alt="Captura de tela 2025-09-29 221305" src="https://github.com/user-attachments/assets/80deaf05-f663-4f6e-93f4-9e0c489b6680" />
 
@@ -58,3 +66,10 @@ Screencast dos testes: https://youtu.be/FVlgAsxKg04
 
 Screencast do build: https://youtu.be/yp-bbEI6lyg
 
+=======
+<summary>Entrega 02 - 29/09:</summary>
+
+  <img width="1530" height="548" alt="Captura de tela 2025-09-18 091608" src="https://github.com/user-attachments/assets/20a2e5e0-de67-4c7a-a37f-3b1cb31292aa" />
+
+</details>
+>>>>>>> dev
