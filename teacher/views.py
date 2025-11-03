@@ -6,7 +6,9 @@ from django.utils import timezone
 from django.utils.text import slugify
 from .models import Teacher
 
-def gerar_username_unico(nome):
+##função que gera um nome unico para cada usuario, 
+##
+def GenerateUniqueUsername(nome):
     base = slugify(nome)
     username = base
     i = 1
@@ -154,7 +156,7 @@ def GoToScore(request,serieId=None,materiaId=None,alunoId=None):
                 nome = request.POST.get("nome")
 
                 if nome:
-                    username = gerar_username_unico(nome)
+                    username = GenerateUniqueUsername(nome)
                     aluno_user = User.objects.create_user(username=username, password="senha_padrao123")
 
                     aluno = Aluno.criar(
