@@ -82,13 +82,11 @@
 
     {% if selectedGrade and selectedStudent %}
 
-        {% for materia, serie in materias_series %}
-        <div id = topBar>
-            <a id="return" class='links' href="{% url 'teacherHome' %}">&larr;</a>
+    <div id = topBar>
+        <a id="return" class='links' href="{% url 'teacherHome' %}">&larr;</a>
 
-            <h2 id="absenceGuide" >Adicione avaliações - {{ materia.nome }} / {{ serie.nome }}:</h3>
-        </div>
-        {% endfor %}
+        <h2 id="absenceGuide" >Adicione avaliações - {{ selectedGrade.1.nome }} / {{ selectedGrade.0.nome }}:</h2>
+    </div>
 
     <form id="avaliacaoForm" method="POST">
     {% csrf_token %}
@@ -116,13 +114,9 @@
         <button id="submitButton" type="submit" name="avaliacaoButton" value=1>Salvar</button>
     </form>
 
-    {% for materia, serie in materias_series %}
-
-        <div id = topBar>
-            <h2 id="absenceGuide" >Defina a media do aluno - {{ materia.nome }} / {{ serie.nome }}:</h3>
-        </div>
-
-    {% endfor %}
+    <div id = topBar>
+        <h2 id="absenceGuide" >Defina a media do aluno - {{ selectedGrade.1.nome }} / {{ selectedGrade.0.nome }}:</h2>
+    </div>
 
     <form id="avaliacaoForm" method="POST">
     {% csrf_token %}

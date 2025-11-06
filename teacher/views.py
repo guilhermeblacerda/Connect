@@ -127,7 +127,7 @@ def GoToScore(request,serieId=None,materiaId=None,alunoId=None):
     context = {}
     aluno = []
     materias_series = []
-    selectedGrade = False
+    selectedGrade = []
     selectedStudent = False
 
     series = professor.serie.all()
@@ -140,7 +140,7 @@ def GoToScore(request,serieId=None,materiaId=None,alunoId=None):
             context['materias_series'] = materias_series
 
     if serieId and materiaId:
-        selectedGrade = True
+        selectedGrade = [Serie.objects.get(id=serieId),Materia.objects.get(id=materiaId)]
 
         serie = Serie.objects.get(id=serieId)
         materia = Materia.objects.get(id=materiaId)
