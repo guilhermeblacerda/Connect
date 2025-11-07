@@ -84,7 +84,7 @@ class TesteE2EStudent(LiveServerTestCase):
         link.click()
 
         WebDriverWait(self.browser, 10).until(
-            expected_conditions.url_contains("#")
+            expected_conditions.url_contains("pdf")
         )
 
     def test_2_RegisterLogin(self):
