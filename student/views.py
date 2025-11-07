@@ -1,10 +1,18 @@
-from django.shortcuts import render,redirect
-
+from django.shortcuts import render,redirect,get_object_or_404
+from django.template.loader import render_to_string
 from django.contrib.auth import login,authenticate,logout
 from django.contrib.auth.models import User
 from django.db.models import Count,Q
-from .models import Falta,Avaliacao,Aluno,Materia,Mensagem,Media
-import json
+from django.http import HttpResponse
+from reportlab.pdfgen import canvas
+from reportlab.lib.pagesizes import A4
+from reportlab.lib.units import mm
+from reportlab.lib import colors
+from barcode import Code128
+from barcode.writer import ImageWriter
+import json,io,datetime
+from PIL import Image
+from .models import *
 
 def home_page(request):
     return render(request,"student/home.html")
@@ -158,5 +166,84 @@ def GoToBoletos(request,boletoId=None):
         boleto = usuario.boletos.filter(id=boletoId).first()
 
     return render(request,'student/boletos.html',context)
+
+def gerar_boleto_pdf(request, boleto_id):
+    boleto = get_object_or_404(Boleto, id=boleto_id)
+
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = f'inline; filename="boleto_{boleto.id}.pdf"'
+
+    p = canvas.Canvas(response, pagesize=A4)
+    width, height = A4
+
+    p.setFont("Helvetica-Bold", 18)
+    p.drawString(50, height - 60, "BANCO ESCOLAR 999-9")
+    p.setFont("Helvetica", 12)
+    p.drawString(width - 220, height - 40, "Data do documento:")
+    p.drawString(width - 200, height - 60, datetime.date.today().strftime("%d/%m/%Y"))
+
+    linha_digitavel = "23793.38127 60000.000123 45000.789654 1 23450000020000"
+    p.setFont("Courier-Bold", 13)
+    p.drawString(50, height - 90, linha_digitavel)
+
+    p.setStrokeColor(colors.black)
+    p.line(50, height - 100, width - 50, height - 100)
+
+    p.setFont("Helvetica-Bold", 12)
+    p.drawString(50, height - 130, "Beneficiário:")
+    p.setFont("Helvetica", 11)
+    p.drawString(150, height - 130, "ESCOLA MODELO LTDA")
+
+    p.setFont("Helvetica-Bold", 12)
+    p.drawString(50, height - 150, "Pagador:")
+    p.setFont("Helvetica", 11)
+    p.drawString(150, height - 150, f"{boleto.usuario.username}")
+
+    p.setFont("Helvetica-Bold", 12)
+    p.drawString(50, height - 170, "Data processamento:")
+    p.setFont("Helvetica", 11)
+    p.drawString(200, height - 170, boleto.atualizadoEm.strftime("%d/%m/%Y"))
+
+    p.setFont("Helvetica-Bold", 12)
+    p.drawString(50, height - 190, "Valor:")
+    p.setFont("Helvetica", 11)
+    p.drawString(150, height - 190, f"R$ {boleto.valor:.2f}")
+
+    p.setFont("Helvetica-Bold", 12)
+    p.drawString(50, height - 210, "Vencimento:")
+    p.setFont("Helvetica", 11)
+    p.drawString(150, height - 210, boleto.dataDeVencimento.strftime("%d/%m/%Y"))
+
+    p.setStrokeColor(colors.gray)
+    p.rect(45, height - 240, width - 90, 100, stroke=1, fill=0)
+
+    barcode_value = "12345678901234567890123456789012345678901234"
+
+    buffer = io.BytesIO()
+    options = {"write_text": False}
+    Code128(barcode_value, writer=ImageWriter()).write(buffer, options)
+    buffer.seek(0)
+
+    barcode_img = Image.open(buffer)
+
+    orig_width, orig_height = barcode_img.size
+
+    target_width = 420
+    target_height = 90
+    scale = min(1,target_width/orig_width,target_height / orig_height)
+
+    display_width = orig_width * scale
+    display_height = orig_height * scale
+
+    p.drawInlineImage(barcode_img, 50, 100, width=display_width, height=display_height)
+
+    p.line(50, 80, width - 50, 80)
+    p.setFont("Helvetica", 8)
+    p.drawString(50, 65, "Documento demonstrativo - sem valor legal")
+
+    p.showPage()
+    p.save()
+
+    return response
 
 # Create your views here.

@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from django.contrib.auth.models import User
 from datetime import date
 from multiselectfield import MultiSelectField
@@ -144,7 +145,6 @@ class Boleto(models.Model):
     usuario = models.ForeignKey(User, related_name="boletos",on_delete=models.CASCADE)
     dataDeVencimento = models.DateTimeField()
     valor = models.FloatField()
-    link = models.URLField(blank=True,null=True,default="#")
     pago = models.BooleanField(default=False, verbose_name='Pago')
     dataDePagamento = models.DateField(blank=True,null=True,verbose_name="Data De Pagamento")
 
@@ -157,5 +157,8 @@ class Boleto(models.Model):
     @property
     def EstaVencida(self):
         return (not self.pago) and (self.dataDeVencimento < date.today())
+
+    def get_absolute_url(self):
+        return reverse('boleto_pdf', args=[self.id])
 
 # Create your models here.

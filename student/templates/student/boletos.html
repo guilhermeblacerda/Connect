@@ -38,7 +38,7 @@
                 </thead>
                 <tbody>
                     {% for boleto in boletos %}
-                    <tr name="{{ boleto.id }}" class="clickable_line" data-href="{{ boleto.link }}"> 
+                    <tr name="{{ boleto.id }}" class="clickable_line" data-href="{{ boleto.get_absolute_url }}"> 
                         <th>{{ boleto.dataDeVencimento }}</th>
                         <th>{{ boleto.valor }}</th>
                         <th>{% if boleto.pago %}sim{% else %}Não{% endif %}</th>

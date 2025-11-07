@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login,authenticate,logout
-from django.contrib.auth.models import User
-from student.models import Serie,Materia,Aluno,Falta,Avaliacao,Media
-from django.utils import timezone
 from django.utils.text import slugify
+
+from django.contrib.auth.models import User
+from student.models import Serie,Materia,Aluno,Falta,Avaliacao,Media,Boleto
+from django.utils import timezone
 from .models import Teacher
 
 '''
@@ -207,5 +208,7 @@ def GoToScore(request,serieId=None,materiaId=None,alunoId=None):
     context['selectedStudent'] = selectedStudent
 
     return render(request,"teacher/score.html",context)
+
+
 
 # Create your views here.

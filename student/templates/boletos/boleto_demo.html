@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <title>Boleto Demonstrativo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      position: relative;
+    }
+    .watermark {
+      position: fixed;
+      top: 35%;
+      left: 10%;
+      transform: rotate(-30deg);
+      font-size: 48px;
+      color: rgba(200,0,0,0.1);
+      z-index: 0;
+    }
+    .content {
+      position: relative;
+      z-index: 1;
+      border: 2px solid #000;
+      padding: 20px;
+      border-radius: 8px;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .linha {
+      border-top: 1px dashed #000;
+      margin: 15px 0;
+    }
+    .campo {
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+    .campo strong {
+      width: 160px;
+      display: inline-block;
+    }
+    .footer {
+      margin-top: 30px;
+      font-size: 12px;
+      color: #555;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="watermark">{{ aviso }}</div>
+
+  <div class="content">
+    <div class="header">
+      <h2>Instituição de Ensino - Boleto Demonstrativo</h2>
+      <p><small>Documento ilustrativo — não possui validade para pagamento</small></p>
+    </div>
+
+    <div class="campo"><strong>Nome do aluno:</strong> {{ usuario.get_full_name|default:usuario.username }}</div>
+    <div class="campo"><strong>Valor:</strong> R$ {{ boleto.valor|floatformat:2 }}</div>
+    <div class="campo"><strong>Data de vencimento:</strong> {{ boleto.dataDeVencimento|date:"d/m/Y" }}</div>
+    <div class="campo"><strong>Status:</strong>
+      {% if boleto.pago %}
+        Pago em {{ boleto.dataDePagamento|date:"d/m/Y" }}
+      {% elif boleto.EstaVencida %}
+        <span style="color:red;">Vencido</span>
+      {% else %}
+        <span style="color:orange;">Em aberto</span>
+      {% endif %}
+    </div>
+
+    <div class="linha"></div>
+
+    <div class="campo"><strong>Código de demonstração:</strong> {{ boleto.id|add:1000 }}{{ usuario.id }}</div>
+    <div class="campo"><strong>Gerado em:</strong> {{ boleto.criadoEm|date:"d/m/Y H:i" }}</div>
+
+    <div class="footer">
+      <p><strong>Atenção:</strong> Este boleto é apenas uma representação visual gerada pelo sistema da escola. Não é válido para pagamento.</p>
+    </div>
+  </div>
+</body>
+</html>

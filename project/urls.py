@@ -52,6 +52,8 @@ urlpatterns = [
 
     path('teacher/score/<int:serieId>/<int:materiaId>/<int:alunoId>/',teacherViews.GoToScore,name = "teacherScoreAluno"),
 
+    path('boleto/<int:boleto_id>/pdf/', studentViews.gerar_boleto_pdf, name='boleto_pdf'),    
+
     path('chat/', studentViews.chat_page , name = "chat"),
 
     path('chat/<int:usuario_id>/', studentViews.chat_page, name='chat'), 
