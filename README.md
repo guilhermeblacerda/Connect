@@ -67,6 +67,5 @@ Também há a parte do professor, que pode cadastrar notas e faltas dos alunos.
 
   Screencast do build: https://youtu.be/yp-bbEI6lyg
 
-  <img width="1530" height="548" alt="Captura de tela 2025-09-18 091608" src="https://github.com/user-attachments/assets/20a2e5e0-de67-4c7a-a37f-3b1cb31292aa" />
 
 </details>
