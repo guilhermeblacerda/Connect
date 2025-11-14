@@ -5,10 +5,11 @@ O connect consiste em uma pagina de web de gestão escolar.
 
 O sistema é uma plataforma web completa desenvolvida para facilitar a gestão acadêmica de instituições de ensino.
 
-Nele, é possível visualizar informações como notas, faltas e calendário acadêmico do aluno.
+Nele, é possível visualizar informações como notas, faltas, calendário acadêmico e boletos do aluno, além de contato com a secretaria
 
 
 Também há a parte do professor, que pode cadastrar notas e faltas dos alunos.
+
 <details>
 
   <summary>Entrega 01 - 12/09:</summary>
