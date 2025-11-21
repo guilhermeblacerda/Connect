@@ -68,8 +68,6 @@ Também há a parte do professor, que pode cadastrar notas e faltas dos alunos.
 
   Screencast do build: https://youtu.be/yp-bbEI6lyg
 
-  Screencast dos testes: https://youtu.be/ZvkOtW5US5k
-
 
 </details>
 
@@ -81,5 +79,12 @@ Também há a parte do professor, que pode cadastrar notas e faltas dos alunos.
   <img width="1397" height="219" alt="Captura de tela 2025-11-21 122315" src="https://github.com/user-attachments/assets/3c3b592b-ad8a-4428-bd59-eb9581601c94" />
 
   Screeencast do build e deploy: https://youtu.be/n0CtiazuNyE
+
+  Screencast dos testes: https://youtu.be/ZvkOtW5US5k
+
+  Relatório de programação em pares incrementado: https://docs.google.com/document/d/1IShEEUbqWfifDA5PFipxCwP6wHIWXmyDP816K3ICCTc/edit?usp=sharing
+
+  
+
   
 </details>
