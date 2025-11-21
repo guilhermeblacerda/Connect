@@ -78,6 +78,6 @@ Também há a parte do professor, que pode cadastrar notas e faltas dos alunos.
   Prints do Jira: <img width="1541" height="160" alt="Captura de tela 2025-11-21 122240" src="https://github.com/user-attachments/assets/25d5ff31-199b-4e49-8c6a-0f0f1b3ddb21" />
   <img width="1397" height="219" alt="Captura de tela 2025-11-21 122315" src="https://github.com/user-attachments/assets/3c3b592b-ad8a-4428-bd59-eb9581601c94" />
 
-
-
+  Screeencast do build e deploy: https://youtu.be/n0CtiazuNyE
+  
 </details>
