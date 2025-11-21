@@ -68,6 +68,8 @@ Também há a parte do professor, que pode cadastrar notas e faltas dos alunos.
 
   Screencast do build: https://youtu.be/yp-bbEI6lyg
 
+  Screencast dos testes: https://youtu.be/ZvkOtW5US5k
+
 
 </details>
 
