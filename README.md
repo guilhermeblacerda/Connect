@@ -84,7 +84,8 @@ Também há a parte do professor, que pode cadastrar notas e faltas dos alunos.
 
   Relatório de programação em pares incrementado: https://docs.google.com/document/d/1IShEEUbqWfifDA5PFipxCwP6wHIWXmyDP816K3ICCTc/edit?usp=sharing
 
-  
+  Bug Tracker: <img width="1020" height="693" alt="Captura de tela 2025-11-21 130604" src="https://github.com/user-attachments/assets/509e8b11-534e-41c8-9af5-6451336a9733" />
+
 
   
 </details>
