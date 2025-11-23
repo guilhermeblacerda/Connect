@@ -49,6 +49,9 @@ def GoToLogin(request):
     Manda o usuario para o home
 '''
 def GoToHome(request):
+    if not request.user.is_authenticated or not hasattr(request.user,'teacher'):
+        return redirect('teacherLogin') 
+    
     return render(request, "teacher/home.html")
 
 '''
