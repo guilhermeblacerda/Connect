@@ -41,12 +41,12 @@ git checkout -b "nome da sua branch"
 
 3. crie um ambiente virtual
 ````bash
-python -m venv "nome_do_seu_ambiente_virtual"
+python -m venv "nome do seu ambiente virtual"
 ````
 
 4. Ative o seu ambiente virtual: 
 ````bash 
-"nome_do_seu_ambiente_virtual"\Scripts\activate 
+"nome do seu ambiente virtual"\Scripts\activate 
 ````
 
 5. Abra a pasta do repositorio e baixe as dependencias do projeto:
