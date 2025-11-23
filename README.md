@@ -80,8 +80,8 @@ Também há a parte do professor, que pode cadastrar notas e faltas dos alunos.
 
   Screeencast do build e deploy: https://youtu.be/n0CtiazuNyE
 
-  Screencast dos testes: https://youtu.be/ZvkOtW5US5k
-
+  Screencast dos testes: https://youtu.be/nJdqzR89VI8
+  
   Screencast das histórias: https://youtu.be/SYpTpboivx0
 
   Link do deploy: https://connect-ctf8.onrender.com
